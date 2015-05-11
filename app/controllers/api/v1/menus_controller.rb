@@ -1,0 +1,15 @@
+class Api::V1::MenusController < ApplicationController
+  before_action :authenticate_api_request
+  before_action :verify_category
+
+  def index
+    @menus = Menu.by_category_id(params[:category_id]).order('created_at DESC')
+  end
+
+  private
+    def verify_category
+      unless @user.categories.map{|c| c.id}.include? params[:category_id].to_i
+        render :json => { :status => 401, message: "Invalid category id." }
+      end
+    end
+end
