@@ -1,0 +1,11 @@
+= simple_form_for(@menu) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :price
+    = f.input :description
+    = f.association :category
+
+  .form-actions
+    = f.button :submit
