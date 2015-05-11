@@ -93,17 +93,6 @@ GEM
       thor (~> 0.14)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    haml (4.0.6)
-      tilt
-    haml2slim (0.4.7)
-      haml (>= 3.0)
-      nokogiri
-      ruby_parser
-    html2haml (2.0.0)
-      erubis (~> 2.7.0)
-      haml (~> 4.0.0)
-      nokogiri (~> 1.6.0)
-      ruby_parser (~> 3.5)
     i18n (0.7.0)
     interception (0.5)
     jbuilder (2.2.13)
@@ -165,8 +154,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails_apps_pages (0.6.0)
-    rails_apps_testing (0.3.12)
     rails_layout (1.0.25)
     railties (4.2.1)
       actionpack (= 4.2.1)
@@ -194,8 +181,6 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
-    ruby_parser (3.6.6)
-      sexp_processor (~> 4.1)
     rubyzip (1.1.7)
     sass (3.4.13)
     sass-rails (5.0.3)
@@ -209,7 +194,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sexp_processor (4.5.1)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -243,8 +227,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -274,8 +256,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro (>= 1.0.0.rc1)
-  haml2slim
-  html2haml
   jbuilder (~> 2.0)
   jquery-rails
   launchy
@@ -285,8 +265,6 @@ DEPENDENCIES
   pundit
   quiet_assets
   rails (= 4.2.1)
-  rails_apps_pages
-  rails_apps_testing
   rails_layout
   rspec-rails
   sass-rails (~> 5.0)
@@ -297,6 +275,5 @@ DEPENDENCIES
   spring-commands-rspec
   therubyracer
   thin
-  turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
