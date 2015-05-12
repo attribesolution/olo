@@ -1,8 +1,10 @@
-= simple_form_for(@category) do |f|
+= simple_form_for @category, html: { multipart: true } do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
+    = f.file_field :image
+    = image_tag @category.image if @category.image?
 
   .form-actions
     = f.button :submit

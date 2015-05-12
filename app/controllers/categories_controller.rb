@@ -27,6 +27,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.restaurant_owner_id = current_user.id
+    @category.image = category_params[:image]
     
     respond_to do |format|
       if @category.save
@@ -71,6 +72,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :image)
     end
 end
