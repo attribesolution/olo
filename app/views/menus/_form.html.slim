@@ -1,4 +1,4 @@
-= simple_form_for(@menu) do |f|
+= simple_form_for @menu, html: { multipart: true } do |f|
   = f.error_notification
 
   .form-inputs
@@ -6,6 +6,8 @@
     = f.input :price
     = f.input :description
     = f.association :category
+    = f.fields_for :menu_image do |p|
+      = p.file_field :image, :multiple => true
 
   .form-actions
     = f.button :submit

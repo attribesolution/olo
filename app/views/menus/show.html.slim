@@ -12,6 +12,10 @@ p
 p
   strong Category:
   = @menu.category.name
+  
+  - if @menu.menu_images.any?
+    - @menu.menu_images.each do |mp|
+      = image_tag mp.image
 
 = link_to 'Edit', edit_menu_path(@menu)
 '|

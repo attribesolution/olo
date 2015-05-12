@@ -28,6 +28,13 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.restaurant_owner_id = current_user.id
 
+    # Upload menu images.
+    unless params[:menu][:menu_image][:image].nil?
+      params[:menu][:menu_image][:image].each do |p|
+        @menu.menu_images.build(image: p)
+      end
+    end
+
     respond_to do |format|
       if @menu.save
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
