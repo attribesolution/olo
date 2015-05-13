@@ -5,7 +5,7 @@ class MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
+    @menus = Menu.by_restaurant_owner(current_user.id)
   end
 
   # GET /menus/1
@@ -29,7 +29,7 @@ class MenusController < ApplicationController
     @menu.restaurant_owner_id = current_user.id
 
     # Upload menu images.
-    unless params[:menu][:menu_image][:image].nil?
+    unless params[:menu][:menu_image].nil?
       params[:menu][:menu_image][:image].each do |p|
         @menu.menu_images.build(image: p)
       end

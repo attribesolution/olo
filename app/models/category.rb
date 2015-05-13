@@ -5,4 +5,6 @@ class Category < ActiveRecord::Base
   mount_uploader :image, CategoryImageUploader
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
+
+  validates_presence_of :name
 end
