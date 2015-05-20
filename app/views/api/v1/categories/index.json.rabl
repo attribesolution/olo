@@ -1,5 +1,5 @@
 collection @categories, :object_root => false
-attributes :id, :name
+attributes :id, :name, :created_at, :updated_at
 
 category = "image"
 
