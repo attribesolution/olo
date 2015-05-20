@@ -29,11 +29,7 @@ class MenusController < ApplicationController
     @menu.restaurant_owner_id = current_user.id
 
     # Upload menu images.
-    unless params[:menu][:menu_image].nil?
-      params[:menu][:menu_image][:image].each do |p|
-        @menu.menu_images.build(image: p)
-      end
-    end
+    upload_images
 
     respond_to do |format|
       if @menu.save
@@ -49,6 +45,9 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
+    # Upload menu images.
+    upload_images
+    
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
@@ -67,6 +66,15 @@ class MenusController < ApplicationController
     respond_to do |format|
       format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def upload_images
+    # Upload menu images.
+    unless params[:menu][:menu_image].nil?
+      params[:menu][:menu_image][:image].each do |p|
+        @menu.menu_images.build(image: p)
+      end
     end
   end
 

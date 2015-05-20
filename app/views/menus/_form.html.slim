@@ -8,6 +8,8 @@
     = f.association :category
     = f.fields_for :menu_image do |p|
       = p.file_field :image, :multiple => true
+    - @menu.menu_images.each do |menu_image|
+      = image_tag menu_image.image
 
   .form-actions
     = f.button :submit
