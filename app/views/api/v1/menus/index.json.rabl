@@ -7,7 +7,7 @@ child :menu_images, :root => "images", :object_root => false do
   menu_image = "url"
 
   node menu_image do |m|
-    m.image.url
+    @base_url + m.image.url unless m.image.url.nil?
   end
 
 end
