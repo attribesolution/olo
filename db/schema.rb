@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526132646) do
+ActiveRecord::Schema.define(version: 20150526145114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20150526132646) do
     t.string   "device_id"
     t.string   "device_name"
     t.string   "table_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "restaurant_owner_id"
   end
 
   add_index "device_table_mappings", ["device_id"], name: "index_device_table_mappings_on_device_id", unique: true, using: :btree

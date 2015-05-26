@@ -1,4 +1,4 @@
-class Api::V1::CategoriesController < ApplicationController
+class Api::V1::CategoriesController < ApiController
 	before_action :authenticate_api_request
 
   def index

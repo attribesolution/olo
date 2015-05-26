@@ -5,7 +5,7 @@ class DeviceTableMappingsController < ApplicationController
   # GET /device_table_mappings
   # GET /device_table_mappings.json
   def index
-    @device_table_mappings = DeviceTableMapping.all
+    @device_table_mappings = DeviceTableMapping.by_restaurant_owner(current_user.id)
   end
 
   # GET /device_table_mappings/1
@@ -26,6 +26,7 @@ class DeviceTableMappingsController < ApplicationController
   # POST /device_table_mappings.json
   def create
     @device_table_mapping = DeviceTableMapping.new(device_table_mapping_params)
+    @device_table_mapping.restaurant_owner_id = current_user.id
 
     respond_to do |format|
       if @device_table_mapping.save
