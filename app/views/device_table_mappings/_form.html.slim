@@ -1,0 +1,10 @@
+= simple_form_for(@device_table_mapping) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :device_id
+    = f.input :device_name
+    = f.input :table_number
+
+  .form-actions
+    = f.button :submit

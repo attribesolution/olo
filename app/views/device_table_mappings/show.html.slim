@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Device ID:
+  = @device_table_mapping.device_id
+p
+  strong Device name:
+  = @device_table_mapping.device_name
+p
+  strong Table number:
+  = @device_table_mapping.table_number
+
+= link_to 'Edit', edit_device_table_mapping_path(@device_table_mapping)
+'|
+= link_to 'Back', device_table_mappings_path

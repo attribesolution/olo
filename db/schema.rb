@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512134128) do
+ActiveRecord::Schema.define(version: 20150526132646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20150512134128) do
     t.datetime "updated_at",          null: false
     t.string   "image"
   end
+
+  create_table "device_table_mappings", force: :cascade do |t|
+    t.string   "device_id"
+    t.string   "device_name"
+    t.string   "table_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "device_table_mappings", ["device_id"], name: "index_device_table_mappings_on_device_id", unique: true, using: :btree
 
   create_table "menu_images", force: :cascade do |t|
     t.string   "image"
