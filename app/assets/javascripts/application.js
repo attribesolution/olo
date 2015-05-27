@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require slimScroll/jquery.slimscroll.min.js
+//= require jquery-flot/jquery.flot.js
+//= require jquery-flot/jquery.flot.resize.js
+//= require jquery-flot/jquery.flot.pie.js
+//= require flot.curvedlines/curvedLines.js
+//= require jquery.flot.spline/index.js
+//= require metisMenu/dist/metisMenu.min.js
+//= require iCheck/icheck.min.js
+//= require peity/jquery.peity.min.js
+//= require sparkline/index.js
+//= require homer.js
+//= require charts.js
+//= require custom_init.js

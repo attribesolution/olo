@@ -10,6 +10,7 @@ gem 'rolify'
 gem 'rabl'
 gem 'oj'
 gem 'carrierwave'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'

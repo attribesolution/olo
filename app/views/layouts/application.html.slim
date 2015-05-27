@@ -16,11 +16,557 @@ html
     = csrf_meta_tags
 
   body
-    header
-      == render 'layouts/navigation'
-    main[role="main"]
-      == render 'layouts/messages'
-      == yield
+    /! Simple splash screen
+.splash
+  .color-line
+  .splash-title
+    h1 Homer - Responsive Admin Theme
+    p Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel.    
+    = image_tag "loading-bars.svg", width: "64", height: "64"
+
+#header
+  .color-line
+  #logo.light-version
+    span
+      | Homer Angular App
+  nav role="navigation" 
+    .header-link.hide-menu
+      i.fa.fa-bars
+    .small-logo
+      span.text-primary HOMER APP
+    form.navbar-form-custom action="#" method="post" role="search" 
+      .form-group
+        input.form-control name="search" placeholder=("Search something special") type="text" /
+    .navbar-right
+      ul.nav.navbar-nav.no-borders
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown" href="#" 
+            i.pe-7s-speaker
+          ul.dropdown-menu.hdropdown.notification.animated.flipInX
+            li
+              a
+                span.label.label-success NEW
+                | It is a long established.
+            li
+              a
+                span.label.label-warning WAR
+                | There are many variations.
+            li
+              a
+                span.label.label-danger ERR
+                | Contrary to popular belief.
+            li.summary
+              a href="#"  See all notifications
+        li.dropdown
+          a.dropdown-toggle.label-menu-corner data-toggle="dropdown" href="#" 
+            i.pe-7s-mail
+            span.label.label-success 4
+          ul.dropdown-menu.hdropdown.animated.flipInX
+            .title
+              | You have 4 new messages
+            li
+              a
+                | It is a long established.
+            li
+              a
+                | There are many variations.
+            li
+              a
+                | Lorem Ipsum is simply dummy.
+            li
+              a
+                | Contrary to popular belief.
+            li.summary
+              a href="#"  See All Messages
+
+        li.dropdown
+          a href="login.html" 
+            i.pe-7s-upload.pe-rotate-90
+/! Navigation
+aside#menu
+  #navigation
+    .profile-picture
+      a href="index.html"         
+        = image_tag "profile.jpg", class: "img-circle m-b"
+      .stats-label.text-color
+        span.font-extra-bold.font-uppercase Robert Razer
+        .dropdown
+          a.dropdown-toggle data-toggle="dropdown" href="#" 
+            small.text-muted
+              | Founder of App
+              b.caret
+          ul.dropdown-menu.animated.fadeInRight.m-t-xs
+            li
+              a href="contacts.html"  Contacts
+            li
+              a href="profile.html"  Profile
+            li
+              a href="analytics.html"  Analytics
+            li.divider
+            li
+              a href="login.html"  Logout
+        #sparkline1.small-chart.m-t-sm
+        div
+          h4.font-extra-bold.m-b-xs
+            | $260 104,200
+          small.text-muted Your income from the last year in sales product X.
+    ul#side-menu.nav
+      li.active
+        a href="index.html" 
+          span.nav-label Dashboard
+          span.label.label-success.pull-right v.1
+      li
+        a href="analytics.html" 
+          span.nav-label Analytics
+          span.label.label-warning.pull-right NEW
+      li
+        a href="#" 
+          span.nav-label Interface
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="panels.html"  Panels design
+          li
+            a href="typography.html"  Typography
+          li
+            a href="buttons.html"  Colors &amp; Buttons
+          li
+            a href="components.html"  Components
+          li
+            a href="alerts.html"  Alerts
+          li
+            a href="modals.html"  Modals
+          li
+            a href="draggable.html"  Draggable panels
+          li
+            a href="nestable_list.html"  List
+          li
+            a href="tour.html"  Tour
+          li
+            a href="icons.html"  Icons library
+      li
+        a href="#" 
+          span.nav-label App views
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="contacts.html"  Contacts
+          li
+            a href="projects.html"  Projects
+          li
+            a href="project.html"  Project detail
+          li
+            a href="social_board.html"  Social board
+          li
+            a href="timeline.html"  Timeline
+          li
+            a href="profile.html"  Profile
+          li
+            a href="mailbox.html"  Mailbox
+          li
+            a href="blog.html"  Blog
+          li
+            a href="blog_details.html"  Blog article
+          li
+            a href="forum.html"  Forum
+          li
+            a href="forum_details.html"  Forum details
+          li
+            a href="gallery.html"  Gallery
+          li
+            a href="calendar.html"  Calendar
+      li
+        a href="#" 
+          span.nav-label Charts
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="chartjs.html"  ChartJs
+          li
+            a href="flot.html"  Flot charts
+          li
+            a href="inline.html"  Inline graphs
+      li
+        a href="#" 
+          span.nav-label Box transitions
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="overview.html" 
+              span.label.label-success.pull-right Start
+              | Overview
+          li
+            a href="transition_two.html"  Columns from up
+          li
+            a href="transition_one.html"  Columns custom
+          li
+            a href="transition_three.html"  Panels zoom
+          li
+            a href="transition_four.html"  Rows from down
+          li
+            a href="transition_five.html"  Rows from right
+      li
+        a href="#" 
+          span.nav-label Common views
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="login.html"  Login
+          li
+            a href="register.html"  Register
+          li
+            a href="error_one.html"  Error 404
+          li
+            a href="error_two.html"  Error 505
+          li
+            a href="lock.html"  Lock screen
+      li
+        a href="#" 
+          span.nav-label Tables
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="tables_design.html"  Tables design
+          li
+            a href="datatables.html"  Data tables
+      li
+        a href="widgets.html" 
+          span.nav-label Widgets
+          span.label.label-success.pull-right Special
+      li
+        a href="#" 
+          span.nav-label Forms
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="forms_elements.html"  Forms elements
+          li
+            a href="forms_extended.html"  Forms extended
+          li
+            a href="text_editor.html"  Text editor
+          li
+            a href="wizard.html"  Wizard
+      li
+        a href="grid_system.html" 
+          span.nav-label Grid system
+      li
+        a href="landing_page.html" 
+          span.nav-label Landing page
+      li
+        a href="angular/index.html" 
+          span.nav-label AngularJS version
+      li
+        a href="http://104.236.248.183/dashboard" 
+          span.nav-label Meteor version
+      li
+        a href="http://104.236.248.183/dashboard" 
+          span.nav-label Meteor version
+/! Main Wrapper
+#wrapper
+  .content.animate-panel
+    .row
+      .col-lg-12.text-center.m-t-md
+        h2
+          | Welcome to Homer Theme
+        p
+          | Special
+          strong AngularJS Admin Theme
+          | for small and medium webapp with very clean and aesthetic style and feel.
+    .row
+      .col-lg-12
+        .hpanel
+          .panel-heading
+            .panel-tools
+              a.showhide
+                i.fa.fa-chevron-up
+              a.closebox
+                i.fa.fa-times
+            | Dashboard information and statistics
+          .panel-body
+            .row
+              .col-md-3.text-center
+                .small
+                  i.fa.fa-bolt
+                  | Page views
+                div
+                  h1.font-extra-bold.m-t-xl.m-b-xs
+                    | 226,802
+                  small Page views in last month
+                .small.m-t-xl
+                  i.fa.fa-clock-o
+                  | Data from January
+              .col-md-6
+                .text-center.small
+                  i.fa.fa-laptop
+                  | Active users in current month (December)
+                .flot-chart style=("height: 160px") 
+                  #flot-line-chart.flot-chart-content
+              .col-md-3.text-center
+                .small
+                  i.fa.fa-clock-o
+                  | Active duration
+                div
+                  h1.font-extra-bold.m-t-xl.m-b-xs
+                    | 10 Months
+                  small And four weeks
+                .small.m-t-xl
+                  i.fa.fa-clock-o
+                  | Last active in 12.10.2015
+          .panel-footer
+            span.pull-right
+              | You have two new messages from
+              a href=""  Monica Bolt
+            | Last update: 21.05.2015
+    .row
+      .col-lg-3
+        .hpanel
+          .panel-body.text-center.h-200
+            i.pe-7s-graph1.fa-4x
+            h1.m-xs $1 206,90
+            h3.font-extra-bold.no-margins.text-success
+              | All Income
+            small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
+          .panel-footer
+            | This is standard panel footer
+      .col-lg-3
+        .hpanel.stats
+          .panel-body.h-200
+            .stats-title.pull-left
+              h4 Users Activity
+            .stats-icon.pull-right
+              i.pe-7s-share.fa-4x
+            .m-t-xl
+              h3.m-b-xs 210
+              span.font-bold.no-margins
+                | Social users
+              .progress.m-t-xs.full.progress-small
+                .progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="55" role="progressbar" style=("width: 55%") 
+                  span.sr-only 35% Complete (success)
+              .row
+                .col-xs-6
+                  small.stats-label Pages / Visit
+                  h4 7.80
+                .col-xs-6
+                  small.stats-label % New Visits
+                  h4 76.43%
+          .panel-footer
+            | This is standard panel footer
+      .col-lg-3
+        .hpanel.stats
+          .panel-body.h-200
+            .stats-title.pull-left
+              h4 Page Views
+            .stats-icon.pull-right
+              i.pe-7s-monitor.fa-4x
+            .m-t-xl
+              h1.text-success 860k+
+              span.font-bold.no-margins
+                | Social users
+              br/
+              small
+                | Lorem Ipsum is simply dummy text of the printing and
+                
+                | Lorem Ipsum has been.
+          .panel-footer
+            | This is standard panel footer
+      .col-lg-3
+        .hpanel.stats
+          .panel-body.h-200
+            .stats-title.pull-left
+              h4 Today income
+            .stats-icon.pull-right
+              i.pe-7s-cash.fa-4x
+            .clearfix
+            .flot-chart
+              #flot-income-chart.flot-chart-content
+            .m-t-xs
+              .row
+                .col-xs-5
+                  small.stat-label Today
+                  h4 $230,00
+                .col-xs-7
+                  small.stat-label Last week
+                  h4
+                    | $7 980,60
+                    i.fa.fa-level-up.text-success
+          .panel-footer
+            | This is standard panel footer
+    .row
+      .col-lg-3
+        .hpanel.stats
+          .panel-heading
+            .panel-tools
+              a.showhide
+                i.fa.fa-chevron-up
+              a.closebox
+                i.fa.fa-times
+            | Last active
+          .panel-body.list
+            .stats-title.pull-left
+              h4 Activity
+            .stats-icon.pull-right
+              i.pe-7s-science.fa-4x
+            .m-t-xl
+              span.font-bold.no-margins
+                | Social users
+              br/
+              small
+                | Lorem Ipsum is simply dummy text of the printing simply all dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.
+            .row.m-t-md
+              .col-lg-6
+                h3.no-margins.font-extra-bold.text-success 300,102
+                .font-bold
+                  | 98%
+                  i.fa.fa-level-up.text-success
+              .col-lg-6
+                h3.no-margins.font-extra-bold.text-success 280,200
+                .font-bold
+                  | 98%
+                  i.fa.fa-level-up.text-success
+            .row.m-t-md
+              .col-lg-6
+                h3.no-margins.font-extra-bold 120,108
+                .font-bold
+                  | 38%
+                  i.fa.fa-level-down
+              .col-lg-6
+                h3.no-margins.font-extra-bold 450,600
+                .font-bold
+                  | 28%
+                  i.fa.fa-level-down
+          .panel-footer
+            | This is standard panel footer
+      .col-lg-6
+        .hpanel
+          .panel-heading
+            .panel-tools
+              a.showhide
+                i.fa.fa-chevron-up
+              a.closebox
+                i.fa.fa-times
+            | Recently active projects
+          .panel-body.list
+            .table-responsive.project-list
+              table.table.table-striped
+                thead
+                  tr
+                    th colspan="2"  Project
+                    th Completed
+                    th Task
+                    th Date
+                    th Action
+                tbody
+                  tr
+                    td
+                      input.i-checks checked="" type="checkbox" /
+                    td
+                      | Contract with Zender Company
+                      br/
+                      small
+                        i.fa.fa-clock-o
+                        | Created 14.08.2015
+                    td
+                      span.pie 1/5
+                    td
+                      strong 20%
+                    td Jul 14, 2013
+                    td
+                      a href="" 
+                        i.fa.fa-check.text-success
+                  tr
+                    td
+                      input.i-checks type="checkbox" /
+                    td
+                      | There are many variations of passages
+                      br/
+                      small
+                        i.fa.fa-clock-o
+                        | Created 21.07.2015
+                    td
+                      span.pie 1/4
+                    td
+                      strong 40%
+                    td Jul 16, 2013
+                    td
+                      a href="" 
+                        i.fa.fa-check.text-navy
+                  tr
+                    td
+                      input.i-checks checked="" type="checkbox" /
+                    td
+                      | Contrary to popular belief
+                      br/
+                      small
+                        i.fa.fa-clock-o
+                        | Created 12.06.2015
+                    td
+                      span.pie 0.52/1.561
+                    td
+                      strong 75%
+                    td Jul 18, 2013
+                    td
+                      a href="" 
+                        i.fa.fa-check.text-navy
+                  tr
+                    td
+                      input.i-checks type="checkbox" /
+                    td
+                      | Gamma project
+                      br/
+                      small
+                        i.fa.fa-clock-o
+                        | Created 06.03.2015
+                    td
+                      span.pie 226/360
+                    td
+                      strong 16%
+                    td Jul 22, 2013
+                    td
+                      a href="" 
+                        i.fa.fa-check.text-navy
+      .col-lg-3
+        .hpanel
+          .panel-heading
+            .panel-tools
+              a.showhide
+                i.fa.fa-chevron-up
+              a.closebox
+                i.fa.fa-times
+            | Activity
+          .panel-body.list
+            .pull-right
+              a.btn.btn-xs.btn-default href="#"  Today
+              a.btn.btn-xs.btn-default href="#"  Month
+            .panel-title Last Activity
+            small.fo This is simple example
+            .list-item-container
+              .list-item
+                h3.no-margins.font-extra-bold.text-success 2,773
+                small Tota Messages Sent
+                .pull-right.font-bold
+                  | 98%
+                  i.fa.fa-level-up.text-success
+              .list-item
+                h3.no-margins.font-extra-bold.text-color3 4,422
+                small Last activity
+                .pull-right.font-bold
+                  | 13%
+                  i.fa.fa-level-down.text-color3
+              .list-item
+                h3.no-margins.font-extra-bold.text-color3 9,180
+                small Monthly income
+                .pull-right.font-bold
+                  | 22%
+                  i.fa.fa-bolt.text-color3
+              .list-item
+                h3.no-margins.font-extra-bold.text-success 1,450
+                small Tota Messages Sent
+                .pull-right.font-bold
+                  | 44%
+                  i.fa.fa-level-up.text-success
+
+
+    == yield
     
     /! Include javascript per-controller - vendor plugins    
     = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
