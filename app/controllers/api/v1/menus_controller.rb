@@ -1,4 +1,4 @@
-class Api::V1::MenusController < ApplicationController
+class Api::V1::MenusController < ApiController
   before_action :authenticate_api_request
   before_action :verify_category
 

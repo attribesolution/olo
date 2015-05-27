@@ -2,6 +2,7 @@
 <% if user_signed_in? %>
   <li><%= link_to 'Categories', categories_path %></li>
   <li><%= link_to 'Menus', menus_path %></li>
+  <li><%= link_to 'Device Table Mapping', device_table_mappings_path %></li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>

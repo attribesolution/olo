@@ -1,0 +1,2 @@
+module DeviceTableMappingsHelper
+end

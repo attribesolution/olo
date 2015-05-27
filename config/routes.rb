@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :device_table_mappings
   resources :menus
   resources :categories
   root to: 'visitors#index'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   	namespace :v1 do
       resources :categories
       resources :menus
+      resources :devices
   	end
   end
 
