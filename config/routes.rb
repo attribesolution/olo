@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :menus
       resources :devices
+      resources :orders
   	end
   end
 

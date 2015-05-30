@@ -1,5 +1,8 @@
 class ApiController < ApplicationController
+  before_action :authenticate_api_request
+  
 	protect_from_forgery with: :null_session
+
   
 	def authenticate_api_request
     api_key = request.headers["HTTP_AUTHORIZATION"]
