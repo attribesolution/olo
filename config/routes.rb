@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :menus
   resources :categories
   root to: 'visitors#index'
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :users
 
   namespace :api do

@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Restaurant Menus'}"
+    title
+      = content_for?(:title) ? yield(:title) : 'Restaurant Menus'
+    = favicon_link_tag 'favicon.ico'
+    /! Include style per-controller - vendor plugins
+    = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")
+    /! Main css styles
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    
+    /! Main javascript files
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+        
+    = csrf_meta_tags
+
+  body.blank
+    /! Simple splash screen
+    .splash
+      .color-line
+      .splash-title
+        h1 Homer - Responsive Admin Theme
+        p Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel.        
+        = image_tag 'loading-bars.svg', :height => "64", :width => "64"
+    
+    .color-line
+
+    == yield
+    
+    /! Include javascript per-controller - vendor plugins    
+    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
+    /! Include javascript per-view
+    /! For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want
+    = yield :javascript

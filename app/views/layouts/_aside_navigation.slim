@@ -4,7 +4,7 @@ aside#menu
       a href="index.html"         
         = image_tag "profile.jpg", class: "img-circle m-b"
       .stats-label.text-color
-        span.font-extra-bold.font-uppercase Robert Razer
+        span.font-extra-bold.font-uppercase #{current_user.email}
         .dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#" 
             small.text-muted

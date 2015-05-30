@@ -1,0 +1,36 @@
+.login-container
+  .row
+    .col-md-12
+      .text-center.m-b-md
+        h3 PLEASE LOGIN TO APP
+        small This is the best app ever!
+      .hpanel
+        .panel-body
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
+            = devise_error_messages!
+            .form-group
+              label.control-label for="email"  Email
+              = f.email_field :email, :autofocus => true, placeholder: "user@example.com", class: 'form-control'
+
+              span.help-block.small Your unique email to app
+            .form-group
+              label.control-label for="password"  Password
+              = f.password_field :password, placeholder: "******", class: 'form-control'
+              span.help-block.small Your strong password
+            
+            / .checkbox
+            /   .icheckbox_square-green.checked style=("position: relative;")
+            /     input.i-checks checked="" style=("position: absolute; opacity: 0;") type="checkbox"
+            /     ins.iCheck-helper style=("position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);")
+            /   | Remember login
+            /   p.help-block.small 
+            /   | (if this is a private computer)
+            
+            = f.submit 'Sign in', :class => 'btn btn-success btn-block'            
+            = link_to 'Sign up', new_registration_path(resource_name), class: 'btn btn-default btn-block' 
+  .row
+    .col-md-12.text-center
+      strong HOMER
+      | \- AngularJS Responsive WebApp
+      br/
+      | 2015 Copyright Company Name
