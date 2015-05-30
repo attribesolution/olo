@@ -1,25 +1,39 @@
 .hpanel
   .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        li          
+          = link_to 'Add Category', new_category_path, class: "btn btn-primary btn-xs"
+        
+
     h2.font-light.m-b-xs
       | Categories
     small Listing Categories
 
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
 
-  tbody
-    - @categories.each do |category|
-      tr
-        td = category.name
-        td = link_to 'Show', category
-        td = link_to 'Edit', edit_category_path(category)
-        td = link_to 'Destroy', category, data: {:confirm => 'Are you sure?'}, :method => :delete
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body        
+        table.table cellpadding="1" cellspacing="1"
+          thead
+            tr
+              th #
+              th Category Name
+              th Actions
 
-br
+          - @categories.each do |category|
+            tr
+              td #{category.id}
+              td #{category.name}
+              td = link_to 'Edit', edit_category_path(category), class: "btn btn-primary btn-xs"
 
-= link_to 'New Category', new_category_path
+          
+
+
+
+
+        / td = category.name
+        / td = link_to 'Show', category
+        / td = link_to 'Edit', edit_category_path(category)
+        / td = link_to 'Destroy', category, data: {:confirm => 'Are you sure?'}, :method => :delete

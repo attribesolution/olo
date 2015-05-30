@@ -1,10 +1,16 @@
 = simple_form_for @category, html: { multipart: true } do |f|
   = f.error_notification
+  br
 
   .form-inputs
-    = f.input :name
-    = f.file_field :image
+    = f.input :name, label: false, placeholder: "Category Name", class: 'form-control'
+
+  .form-inputs
+    = f.file_field :image, class: 'form-control'
     = image_tag @category.image if @category.image?
 
+  br
   .form-actions
-    = f.button :submit
+    = f.submit "Add", class: "btn btn-primary"
+    |  
+    = link_to 'Back', categories_path, class: "btn btn-default"
