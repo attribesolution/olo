@@ -2,7 +2,7 @@
   .color-line
   #logo.light-version
     span
-      | Homer Angular App
+      | Restaurant Menu
   nav role="navigation" 
     .header-link.hide-menu
       i.fa.fa-bars
@@ -54,5 +54,5 @@
               a href="#"  See All Messages
 
         li.dropdown
-          a href="login.html" 
+          = link_to destroy_user_session_path, :method=>'delete' do          
             i.pe-7s-upload.pe-rotate-90
