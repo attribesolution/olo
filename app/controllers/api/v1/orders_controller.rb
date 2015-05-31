@@ -19,6 +19,6 @@ class Api::V1::OrdersController < ApiController
       device_id = params[:device_id]
       @device = DeviceTableMapping.where(device_id: device_id)
 
-      return render :json => { message: "Invalid Device ID.", :status => 422 } unless @device.any?
+      render :json => { message: "Invalid Device ID.", :status => 422 } unless @device.any?
     end
 end
