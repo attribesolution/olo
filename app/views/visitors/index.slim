@@ -35,7 +35,7 @@
                         = "x" + detail.quantity.to_s
 
                       .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = detail.menu.price * detail.quantity
+                        = detail.item_total
 
                   
                 .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
@@ -44,7 +44,7 @@
                       button.btn.btn-xs.btn-default Assign
                   .project-value
                     h2.text-success
-                      | AED 1206,40
+                      | AED #{order.order_total}
                   
             .panel-footer
               | Additional information about project in footer      

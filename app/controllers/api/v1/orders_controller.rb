@@ -2,13 +2,11 @@ class Api::V1::OrdersController < ApiController
   before_action :get_table, only: [:create]
 
 	def create
-    @order = Order.create(table_no: @device.first.id)
+    @order = Order.create(table_no: @device.first.id, order_total: params[:order_total])
     order_detail = params[:order_detail]
-    
-    # binding.pry
+        
     order_detail.each do |detail|
-      # binding.pry
-      OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity])
+      OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_total: detail[:item_total])
     end
     
     render :json => { message: "Order created successfully.", :status => 200 }
