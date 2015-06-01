@@ -1,0 +1,94 @@
+.hpanel
+  .panel-body
+    h2.font-light.m-b-xs
+      | Orders
+    small Listing Orders
+
+- if @orders.any?
+  - @orders.each do |order|
+    / - binding.pry
+    .row.projects
+      .col-lg-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.1s;") 
+        .hpanel.hgreen
+          .panel-body
+            .row
+              .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+                h4
+                  = "Table No: " + order.restaurant_table.table_number.to_s
+
+                h5 Order Detail
+                p
+                  | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has..
+                / - binding.pry
+                .row
+                  .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+                    .project-label Food
+
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+                    .project-label Quantity
+
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+                    .project-label Total
+
+                - order.order_details.each do |detail|
+                  .row
+                    .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+                      = detail.menu.name
+
+                    .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+                      = "x" + detail.quantity.to_s
+
+                    .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+                      = detail.menu.price * detail.quantity
+
+                
+              .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
+                .project-action.m-t-md
+                  .btn-group
+                    button.btn.btn-xs.btn-default Assign
+                .project-value
+                  h2.text-success
+                    | AED 1206,40
+                
+          .panel-footer
+            | Additional information about project in footer
+      .col-lg-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
+        .hpanel.hyellow
+          .panel-body
+            .row
+              .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.6s;") 
+                h4
+                  a href=""  Project manager app
+                p
+                  | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum..
+                .row
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.7s;") 
+                    .project-label CLIENT
+                    small Vito Company
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.7s;") 
+                    .project-label VERSION
+                    small 3.0.0
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.8s;") 
+                    .project-label DEDLINE
+                    small 16.10.2015
+                  .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.8s;") 
+                    .project-label PROGRESS
+                    .progress.m-t-xs.full.progress-small
+                      .progress-bar.progress-bar-warning aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" style=("width: 65%") 
+              .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.9s;") 
+                .project-action.m-t-md
+                  .btn-group
+                    button.btn.btn-xs.btn-default View
+                    button.btn.btn-xs.btn-default Edit
+                    button.btn.btn-xs.btn-default Delete
+                .project-value
+                  h2.text-warning
+                    | $3 600,20
+                .project-people
+                  img.img-circle alt="logo" src="images/a7.jpg" /
+                  img.img-circle alt="logo" src="images/a8.jpg" /
+                  img.img-circle alt="logo" src="images/a3.jpg" /
+                  img.img-circle alt="logo" src="images/a2.jpg" /
+                  img.img-circle alt="logo" src="images/a5.jpg" /
+          .panel-footer
+            | Additional information about project in footer
