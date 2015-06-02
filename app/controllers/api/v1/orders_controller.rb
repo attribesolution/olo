@@ -2,7 +2,7 @@ class Api::V1::OrdersController < ApiController
   before_action :get_table, only: [:create]
 
 	def create
-    @order = Order.create(table_no: @device.first.id, order_total: params[:order_total])
+    @order = Order.create(table_no: @device.first.id, order_total: params[:order_total], restaurant_owner_id: current_user.id)
     order_detail = params[:order_detail]
         
     order_detail.each do |detail|
