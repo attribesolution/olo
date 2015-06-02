@@ -5,5 +5,7 @@ class Order < ActiveRecord::Base
 
   as_enum :status, [:placed, :assigned, :closed], map: :string
 
+  scope :by_user, lambda { |id| where(restaurant_owner_id: id) }
+
   
 end
