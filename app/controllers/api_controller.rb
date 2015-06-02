@@ -10,5 +10,7 @@ class ApiController < ApplicationController
   
     render :json => { :status => 401, message: "API key is required." } if api_key.blank?
     render :json => { :status => 401, message: "Invalid API key." } if @user.nil?
+
+    return
   end
 end

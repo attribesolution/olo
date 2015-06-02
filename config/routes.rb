@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       resources :menus
       resources :devices
       resources :orders
-      resources :users do
-        get :get_api_key
+      resource :user do
+        get :get_api_key, on: :member
       end
   	end
   end
