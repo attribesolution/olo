@@ -1,14 +1,12 @@
 h1 Listing device_table_mappings
 
-table
+table.table.table-bordered
   thead
     tr
       th Device ID
       th Device name
       th Table number
-      th
-      th
-      th
+      th Actions
 
   tbody
     - @device_table_mappings.each do |device_table_mapping|
@@ -16,9 +14,12 @@ table
         td = device_table_mapping.device_id
         td = device_table_mapping.device_name
         td = device_table_mapping.table_number
-        td = link_to 'Show', device_table_mapping
-        td = link_to 'Edit', edit_device_table_mapping_path(device_table_mapping)
-        td = link_to 'Destroy', device_table_mapping, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td
+          = link_to 'Show', device_table_mapping, class: "btn btn-primary btn-xs glyphicon glyphicon-folder-open"
+          |
+          = link_to 'Edit', edit_device_table_mapping_path(device_table_mapping), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
+          |
+          = link_to 'Destroy', device_table_mapping, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
 
 br
 
