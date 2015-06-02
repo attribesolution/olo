@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       resources :menus
       resources :devices
       resources :orders
+      resources :users do
+        get :get_api_key
+      end
   	end
   end
 
