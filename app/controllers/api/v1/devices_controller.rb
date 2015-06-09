@@ -26,7 +26,7 @@ class Api::V1::DevicesController < ApiController
     conflicted_device_id = DeviceTableMapping.where(device_id: @device_id)
     return render :json => { message: "Device ID already exists.", :status => 422 } if conflicted_device_id.any?
 
-    conflicted_device_name_of_this_restaurant_owner = DeviceTableMapping.where(device_name: @device_name, restaurant_owner_id: @user.id)
+    conflicted_device_name_of_this_restaurant_owner = DeviceTableMapping.where("lower(device_name) = ? and restaurant_owner_id= ?", @device_name.downcase, @user.id)
     return render :json => { message: "Device Name already exists.", :status => 422 } if conflicted_device_name_of_this_restaurant_owner.any?
   end
 
