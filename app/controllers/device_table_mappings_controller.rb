@@ -71,6 +71,6 @@ class DeviceTableMappingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_table_mapping_params
-      params.require(:device_table_mapping).permit(:device_id, :device_name, :table_number)
+      params.require(:device_table_mapping).permit(:device_id, :device_name, :table_no)
     end
 end

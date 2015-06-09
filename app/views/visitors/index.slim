@@ -29,7 +29,7 @@
                   - order.order_details.each do |detail|
                     .row
                       .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = detail.menu.name
+                        = detail.item_name
 
                       .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
                         = "x" + detail.quantity.to_s
