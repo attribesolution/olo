@@ -14,8 +14,8 @@
               .row
                 .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
                   h4
-                    = "Table No: " + order.restaurant_table.table_number.to_s
-                                 
+                    = "Table No: " + order.table_no.to_s
+
                   .row
                     .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
                       .project-label FOOD
@@ -35,7 +35,7 @@
                         = "x" + detail.quantity.to_s
 
                       .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = detail.item_total
+                        = detail.quantity * detail.item_price
 
                   
                 .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
