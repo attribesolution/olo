@@ -22,7 +22,7 @@ class Api::V1::OrdersController < ApiController
     end
 
     def get_table_no
-      if params[:table_no].blank?
+      if params[:table_no] == 0
         @table_no = @device.first.table_no
       else
         @table_no = params[:table_no]
