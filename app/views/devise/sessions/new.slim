@@ -26,11 +26,6 @@
             /   p.help-block.small 
             /   | (if this is a private computer)
             
-            = f.submit 'Sign in', :class => 'btn btn-success btn-block'            
+            = f.submit 'Sign in', :class => 'btn btn-success btn-block'
             = link_to 'Sign up', new_registration_path(resource_name), class: 'btn btn-default btn-block' 
-  .row
-    .col-md-12.text-center
-      strong HOMER
-      | \- AngularJS Responsive WebApp
-      br/
-      | 2015 Copyright Company Name
+        /= render "devise/shared/links"

@@ -1,0 +1,26 @@
+.login-container
+  .row
+    .col-md-12
+      .text-center.m-b-md
+        h3 PLEASE SIGNUP TO APP
+        small This is the best app ever!
+      .hpanel
+        .panel-body
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = f.error_notification
+            .form-group
+              = f.input :email, required: true, autofocus: true
+              span.help-block.small Your unique email to app
+
+            .form-group
+              = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
+              span.help-block.small Your strong password
+
+            .form-group
+              = f.input :password_confirmation, required: true
+
+            = f.submit "Sign up", class: 'btn btn-success btn-block'
+            = link_to 'Sign in', new_session_path(resource_name), class: 'btn btn-default btn-block'
+
+          
+        /= render "devise/shared/links"
