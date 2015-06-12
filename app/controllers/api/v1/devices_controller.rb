@@ -8,7 +8,7 @@ class Api::V1::DevicesController < ApiController
       device.save!
       render :json => { message: "Device mapped successfully.", key: @user.api_key, :status => 200 }
     rescue => e
-      render :json => { message: e.message, :status => 501 }
+      render :json => { message: e.message, key: "", :status => 501 }
     end
   end
 
@@ -17,9 +17,9 @@ class Api::V1::DevicesController < ApiController
     @device_name = params[:device_name]
     @passcode = params[:passcode]
 
-    return render :json => { message: "Passcode is required.", :status => 422 } if @passcode.blank?
+    return render :json => { message: "Passcode is required.", :status => 421 } if @passcode.blank?
     return render :json => { message: "Device ID is required.", :status => 422 } if @device_id.blank?
-    return render :json => { message: "Device Name is required.", :status => 422 } if @device_name.blank?
+    return render :json => { message: "Device Name is required.", :status => 423 } if @device_name.blank?
   end
 
   def validates_uniqueness
@@ -28,13 +28,13 @@ class Api::V1::DevicesController < ApiController
     @passcode = params[:passcode]
 
     @user = User.where(passcode: @passcode).first
-    return render :json => { message: "Invalid Passcode", :status => 422 } if @user.nil?
+    return render :json => { message: "Invalid Passcode", :status => 421 } if @user.nil? 
 
     conflicted_device_id = DeviceTableMapping.where(device_id: @device_id, restaurant_owner_id: @user.id)
     return render :json => { message: "Device ID already exists.", :status => 422 } if conflicted_device_id.any?
 
     conflicted_device_name_of_this_restaurant_owner = DeviceTableMapping.where("lower(device_name) = ? and restaurant_owner_id= ?", @device_name.downcase, @user.id)
-    return render :json => { message: "Device Name already exists.", :status => 422 } if conflicted_device_name_of_this_restaurant_owner.any?
+    return render :json => { message: "Device Name already exists.", :status => 423 } if conflicted_device_name_of_this_restaurant_owner.any?
   end
 
 end
