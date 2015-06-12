@@ -14,7 +14,9 @@ class Api::V1::DevicesController < ApiController
   def check_required_params
     @device_id = params[:device_id]
     @device_name = params[:device_name]
+    @passcode = params[:passcode]
 
+    return render :json => { message: "Passcode is required.", :status => 422 } if @passcode.blank?
     return render :json => { message: "Device ID is required.", :status => 422 } if @device_id.blank?
     return render :json => { message: "Device Name is required.", :status => 422 } if @device_name.blank?
   end
@@ -22,8 +24,12 @@ class Api::V1::DevicesController < ApiController
   def validates_uniqueness
     @device_id = params[:device_id]
     @device_name = params[:device_name]
+    @passcode = params[:passcode]
 
-    conflicted_device_id = DeviceTableMapping.where(device_id: @device_id)
+    @passcode = User.where(passcode: @passcode)
+    return render :json => { message: "Invalid Passcode", :status => 422 } unless @passcode.any?
+
+    conflicted_device_id = DeviceTableMapping.where(device_id: @device_id, restaurant_owner_id: @passcode.id)
     return render :json => { message: "Device ID already exists.", :status => 422 } if conflicted_device_id.any?
 
     conflicted_device_name_of_this_restaurant_owner = DeviceTableMapping.where("lower(device_name) = ? and restaurant_owner_id= ?", @device_name.downcase, @user.id)
