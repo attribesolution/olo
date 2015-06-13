@@ -3,7 +3,7 @@ class Api::V1::OrdersController < ApiController
   before_action :get_table_no, only: [:create]
 
 	def create
-    @order = Order.create(table_no: @table_no, order_total: params[:order_total], restaurant_owner_id: @device.first.restaurant_owner_id, device_table_mapping_id: @device.first.id)
+    @order = Order.create(table_no: @table_no, order_total: params[:order_total], restaurant_owner_id: @user.id, device_table_mapping_id: @device.first.id)
     order_detail = params[:order_detail]
         
     order_detail.each do |detail|
@@ -16,7 +16,7 @@ class Api::V1::OrdersController < ApiController
   private
     def get_device_table_mapping
       device_id = params[:device_id]
-      @device = DeviceTableMapping.where(device_id: device_id)
+      @device = DeviceTableMapping.where(device_id: device_id, restaurant_owner_id: @user.id)
 
       render :json => { message: "Invalid Device ID.", :status => 422 } unless @device.any?
     end
