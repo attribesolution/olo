@@ -1,27 +1,40 @@
-h1 Listing menus
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        li          
+          = link_to 'Add Menu', new_menu_path, class: "btn btn-primary btn-xs"
+        
 
-table
-  thead
-    tr
-      th Name
-      th Price
-      th Description
-      th Category
-      th
-      th
-      th
+    h2.font-light.m-b-xs
+      | Menus
+    small Listing Menus
 
-  tbody
-    - @menus.each do |menu|
-      tr
-        td = menu.name
-        td = menu.price
-        td = menu.description
-        td = menu.category.name
-        td = link_to 'Show', menu
-        td = link_to 'Edit', edit_menu_path(menu)
-        td = link_to 'Destroy', menu, data: {:confirm => 'Are you sure?'}, :method => :delete
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body        
+        table.table cellpadding="1" cellspacing="1"
+          thead
+            tr
+              th Name
+              th Price
+              th Description
+              th Category
+              th Actions
+              th
+              th
 
-br
-
-= link_to 'New Menu', new_menu_path
+          tbody
+            - @menus.each do |menu|
+              tr
+                td = menu.name
+                td = menu.price
+                td = menu.description
+                td = menu.category.name
+                td 
+                  = link_to 'Show', menu, class: "btn btn-primary btn-xs"
+                  |  
+                  = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs"
+                  |  
+                  = link_to 'Destroy', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs"

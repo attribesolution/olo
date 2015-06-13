@@ -1,8 +1,11 @@
-h1 Editing category
+.hpanel
+  .panel-body    
+    h2.font-light.m-b-xs
+      | Edit Category 
+    
 
-== render 'form'
-
-= link_to 'Show', @category
-'|
-= link_to 'Back', categories_path
-
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body
+      	== render 'form'
