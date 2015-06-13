@@ -9,18 +9,18 @@ aside#menu
         .dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#" 
             small.text-muted
-              | Founder of App
-              b.caret
-          ul.dropdown-menu.animated.fadeInRight.m-t-xs
-            li
-              a href="contacts.html"  Contacts
-            li
-              a href="profile.html"  Profile
-            li
-              a href="analytics.html"  Analytics
-            li.divider
-            li
-              a href="login.html"  Logout
+              | Digital Menu App
+              / b.caret
+          / ul.dropdown-menu.animated.fadeInRight.m-t-xs
+          /   li
+          /     a href="contacts.html"  Contacts
+          /   li
+          /     a href="profile.html"  Profile
+          /   li
+          /     a href="analytics.html"  Analytics
+          /   li.divider
+          /   li
+          /     a href="login.html"  Logout
         #sparkline1.small-chart.m-t-sm
         div
           h4.font-extra-bold.m-b-xs
@@ -30,7 +30,7 @@ aside#menu
 
     ul#side-menu.nav
       li.active
-        a href="index.html" 
+        = link_to root_path do        
           span.nav-label Dashboard
           span.label.label-success.pull-right v.1
       li
@@ -42,5 +42,5 @@ aside#menu
           span.nav-label Menus
 
       li
-        = link_to "#" do
+        = link_to root_path do
           span.nav-label orders

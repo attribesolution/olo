@@ -13,9 +13,7 @@
             .panel-body
               .row
                 .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-                  h4
-                    = "Table No: " + order.table_no.to_s
-
+                  
                   .row
                     .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
                       .project-label FOOD
@@ -44,7 +42,9 @@
                       button.btn.btn-xs.btn-default Assign
                   .project-value
                     h2.text-success
-                      | AED #{order.order_total}
+                      | Table No. #{order.table_no.to_s}
+
                   
             .panel-footer
-              | Additional information about project in footer      
+              b Total: 
+              | #{order.order_total}
