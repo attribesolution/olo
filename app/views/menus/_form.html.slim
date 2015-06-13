@@ -1,15 +1,25 @@
 = simple_form_for @menu, html: { multipart: true } do |f|
   = f.error_notification
+  br
 
   .form-inputs
-    = f.input :name
-    = f.input :price
-    = f.input :description
-    = f.association :category
+    = f.input :name, label: false, placeholder: "Menu Name", class: 'form-control'
+
+  .form-inputs
+    = f.input :price, label: false, placeholder: "Price", class: 'form-control'
+
+  .form-inputs
+    = f.input :description, label: false, placeholder: "Description", class: 'form-control'
+
+  .form-inputs
+    = f.association :category, collection: Category.where(restaurant_owner_id: current_user.id), label: false, prompt: "Select a category"
+  
+  .form-inputs
     = f.fields_for :menu_image do |p|
       = p.file_field :image, :multiple => true
     - @menu.menu_images.each do |menu_image|
       = image_tag menu_image.image
 
+  br
   .form-actions
-    = f.button :submit
+    = f.submit "Add", class: "btn btn-primary"
