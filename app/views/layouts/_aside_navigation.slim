@@ -1,7 +1,7 @@
 aside#menu
   #navigation
     .profile-picture
-      a href="index.html"         
+      = link_to root_path do       
         = image_tag "profile.jpg", class: "img-circle m-b"
       .stats-label.text-color
         - if user_signed_in?

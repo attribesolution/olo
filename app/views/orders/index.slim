@@ -1,58 +1,22 @@
-.hpanel
-  .panel-body
-    h2.font-light.m-b-xs
-      | Orders
-    small Listing Orders
+#header
+  nav role="navigation" 
 
+    form.navbar-form-custom action="#" method="post" role="search" 
+      h1 orders
+    .navbar-right
+      ul.nav.navbar-nav.no-borders
+        li.dropdown
+          a href="#{root_path}" 
+            i.pe-7s-back          
+
+        li.dropdown
+          = link_to destroy_user_session_path, :method=>'delete' do
+            i.pe-7s-upload.pe-rotate-90
+
+br
 - if @orders.any?  
   - @orders.each_slice(3).each do |orders|
     .row.projects
       - orders.each do |order|
         .col-lg-4.animated-panel.zoomIn style=("-webkit-animation-delay: 0.1s;") 
-          .hpanel.hgreen
-            .panel-body
-              .row
-                .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-                  
-                  .row
-                    .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-                      .project-label FOOD
-
-                    .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-                      .project-label QUANTITY
-
-                    .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-                      .project-label TOTAL
-
-                  - order.order_details.each do |detail|
-                    .row
-                      .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = detail.item_name
-
-                      .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = "x" + detail.quantity.to_s
-
-                      .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-                        = detail.quantity * detail.item_price
-
-                  
-                .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
-                  .project-action.m-t-md                    
-                    .btn-group
-                      button.btn.btn-warning.dropdown-toggle id="order_status_#{order.id}" aria-expanded="false" data-toggle="dropdown" 
-                        | #{order.status.to_s.humanize}                        
-
-                        span.caret
-                      ul.dropdown-menu
-                        - Order.statuses.hash.each do |arr|
-                          li
-                            = link_to arr[1].humanize, update_status_orders_path(id: order.id, status: arr[1]), remote: true, method: 'post'
-
-                  .project-value
-                    h2.text-success
-                      | Table No. #{order.table_no.to_s}
-
-                  
-            .panel-footer
-              b Total: 
-              | AED #{order.order_total}
+          = render "orders/item", order: order
