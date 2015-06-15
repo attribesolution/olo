@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :settings do
+    collection do
+      post :upload_images
+    end
+  end
+
   namespace :api do
   	namespace :v1 do
       resources :categories do
