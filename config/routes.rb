@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :users
 
+  resources :orders do
+    collection do
+      post :update_status
+    end
+  end
+
   namespace :api do
   	namespace :v1 do
       resources :categories do
