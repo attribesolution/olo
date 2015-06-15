@@ -45,13 +45,18 @@ class BackgroundImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
 
+  # def filename
+  #   @name ||= "#{timestamp}-#{super}" if original_filename.present? and super.present?
+  # end
+
+  # def timestamp
+  #   var = :"@#{mounted_as}_timestamp"
+  #   model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
+  # end
+  # def filename
+  #   Time.now.to_i.to_s+"_"+original_filename if original_filename
+  # end
   def filename
-    @name ||= "#{timestamp}-#{super}" if original_filename.present? and super.present?
+    @memoized_filename ||= "T#{Time.current.to_i}_#{original_filename}" if original_filename
   end
-
-  def timestamp
-    var = :"@#{mounted_as}_timestamp"
-    model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
-  end
-
 end
