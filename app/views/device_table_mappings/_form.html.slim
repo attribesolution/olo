@@ -7,4 +7,6 @@
     = f.input :table_no
 
   .form-actions
-    = f.button :submit
+    = f.submit "Update", class: "btn btn-primary"
+    |  
+    = link_to 'Back', device_table_mappings_path, class: "btn btn-default"

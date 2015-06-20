@@ -1,8 +1,11 @@
-h1 Editing device_table_mapping
+.hpanel
+  .panel-body    
+    h2.font-light.m-b-xs
+      | Edit Device Mapping 
 
-== render 'form'
 
-= link_to 'Show', @device_table_mapping
-'|
-= link_to 'Back', device_table_mappings_path
-
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body
+      	== render 'form'
