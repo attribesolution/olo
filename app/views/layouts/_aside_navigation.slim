@@ -2,7 +2,7 @@ aside#menu
   #navigation
     .profile-picture
       = link_to root_path do       
-        = image_tag "profile.jpg", class: "img-circle m-b"
+        = image_tag "dm-logo2.png", class: "img-circle m-b"
       .stats-label.text-color
         - if user_signed_in?
           span.font-extra-bold.font-uppercase #{current_user.email}
@@ -34,7 +34,6 @@ aside#menu
       li.active
         = link_to root_path do        
           span.nav-label Dashboard
-          span.label.label-success.pull-right v.1
       li
         = link_to categories_path do        
           span.nav-label Categories
