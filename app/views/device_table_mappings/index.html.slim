@@ -1,26 +1,38 @@
-h1 Listing device_table_mappings
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        li          
+          / = link_to 'Add new Device', new_device_table_mapping_path, class: "btn btn-primary btn-xs"
+        
 
-table.table.table-bordered
-  thead
-    tr
-      th Device ID
-      th Device name
-      th Table number
-      th Actions
+    h2.font-light.m-b-xs
+      | Devices
+    small Listing Devices and their mappings to tables
 
-  tbody
-    - @device_table_mappings.each do |device_table_mapping|
-      tr
-        td = device_table_mapping.device_id
-        td = device_table_mapping.device_name
-        td = device_table_mapping.table_no
-        td
-          = link_to 'Show', device_table_mapping, class: "btn btn-primary btn-xs glyphicon glyphicon-folder-open"
-          |
-          = link_to 'Edit', edit_device_table_mapping_path(device_table_mapping), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
-          |
-          = link_to 'Destroy', device_table_mapping, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
 
-br
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body        
+        table.table cellpadding="1" cellspacing="1"
+          thead
+            tr
+              th Device ID
+              th Device name
+              th Table number
+              th Actions
 
-= link_to 'New Device table mapping', new_device_table_mapping_path
+          tbody
+            - @device_table_mappings.each do |device_table_mapping|
+              tr
+                td = device_table_mapping.device_id
+                td = device_table_mapping.device_name
+                td = device_table_mapping.table_no
+                td
+                  = link_to 'Show', device_table_mapping, class: "btn btn-primary btn-xs glyphicon glyphicon-folder-open"
+                  |  
+                  = link_to 'Edit', edit_device_table_mapping_path(device_table_mapping), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
+                  |  
+                  = link_to 'Destroy', device_table_mapping, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
+
