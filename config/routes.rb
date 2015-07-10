@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'menu_images/destroy'
+
   resources :device_table_mappings
-  resources :menus
+  resources :menus do
+    resources :menu_images, :only => [:destroy]
+  end
   resources :categories
   root to: 'visitors#index'
   # devise_for :users
