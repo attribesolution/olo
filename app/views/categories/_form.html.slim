@@ -9,6 +9,11 @@
     = f.file_field :image, class: 'form-control'
     = image_tag @category.image if @category.image?
 
+  p
+    label
+      = f.check_box :remove_image
+      | Remove image
+
   br
   .form-actions
     = f.submit "Add", class: "btn btn-primary"
