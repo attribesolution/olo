@@ -11,6 +11,8 @@ gem 'rabl'
 gem 'oj'
 gem 'carrierwave'
 gem 'font-awesome-rails'
+gem 'ransack'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
