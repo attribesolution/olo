@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   before_create :generate_api_key
   before_create :generate_passcode
+  # after_create :notify_admin
 
   has_many :categories, :class_name => "Category", :foreign_key => "restaurant_owner_id"
   has_many :menus, :class_name => "Menu", :foreign_key => "restaurant_owner_id"
@@ -17,8 +18,24 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
+
+  def notify_admin
+    AdminMailer.new_user_waiting_for_approval(self).deliver_now
+  end
 
   private
     def generate_api_key

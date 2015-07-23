@@ -8,6 +8,7 @@
         .panel-body
           = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
             = devise_error_messages!
+            = render 'layouts/messages'
             .form-group
               label.control-label for="email"  Email
               = f.email_field :email, :autofocus => true, placeholder: "user@example.com", class: 'form-control'
