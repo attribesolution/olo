@@ -5,8 +5,16 @@ class ControlPanel::UsersController < ApplicationController
     if params[:approved] == "false"
       @users = User.where(approved: false)
     else
-      @users = User.all
+      @users = User.with_role(:restaurant_owner)
     end
+  end
+
+  def approve_disapprove
+    user = User.find(params[:id])
+    user.update_attribute(:approved, user.approved ^= true)
+    
+    msg = { :status => 200, :message => "Success!", :approved => user.approved ? "Yes" : "No" }
+    render :json => msg
   end
 
   protected

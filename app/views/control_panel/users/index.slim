@@ -5,7 +5,7 @@
         li
           = link_to "All Users", { action: "index"} , class: "btn btn-primary btn-xs"
         li
-          = link_to "Users awaiting approval", { :action => "index", :approved => "false" }, class: "btn btn-primary btn-xs"
+          = link_to "Users awaiting approval", { :action => "index", :approved => "false"}, class: "btn btn-primary btn-xs"
         
 
     h2.font-light.m-b-xs
@@ -28,4 +28,4 @@
           - @users.each do |user|
             tr
               td = user.email
-              td = user.approved ? "Yes" : "No"
+              td = link_to user.approved ? "Yes" : "No", "javascript:void(0);", id: user.id, class: "approve_disapprove approve_#{user.id}"
