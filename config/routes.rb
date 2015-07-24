@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   	end
   end
 
+  namespace :control_panel do
+    resources :users, :only => [:index]
+  end
+
 end

@@ -34,7 +34,7 @@ module RestaurantMenus
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.assets.precompile += [ 'categories.css', 'menus.css', 'device_table_mappings.css', 'orders.css', 'settings.css' ]
-    config.assets.precompile += [ 'categories.js', 'menus.js', 'device_table_mappings.js', 'orders.js', 'settings.js' ]
+    config.assets.precompile += [ 'categories.css', 'menus.css', 'device_table_mappings.css', 'orders.css', 'settings.css', 'control_panel/users.css' ]
+    config.assets.precompile += [ 'categories.js', 'menus.js', 'device_table_mappings.js', 'orders.js', 'settings.js', 'control_panel/users.js' ]
   end
 end
