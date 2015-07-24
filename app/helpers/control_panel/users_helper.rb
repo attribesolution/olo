@@ -1,0 +1,2 @@
+module ControlPanel::UsersHelper
+end

@@ -12,14 +12,14 @@ class User < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
   mount_uploader :background_image, BackgroundImageUploader
 
-  def set_default_role
-    self.add_role :restaurant_owner
-  end
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  def set_default_role
+    self.add_role :restaurant_owner
+  end
 
   def active_for_authentication?
     super && approved?

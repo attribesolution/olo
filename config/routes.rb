@@ -39,4 +39,12 @@ Rails.application.routes.draw do
   	end
   end
 
+  namespace :control_panel do
+    resources :users, :only => [:index] do
+      collection do
+        post :approve_disapprove
+      end
+    end
+  end
+
 end

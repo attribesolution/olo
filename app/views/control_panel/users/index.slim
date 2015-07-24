@@ -1,0 +1,31 @@
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        li
+          = link_to "All Users", { action: "index"} , class: "btn btn-primary btn-xs"
+        li
+          = link_to "Users awaiting approval", { :action => "index", :approved => "false"}, class: "btn btn-primary btn-xs"
+        
+
+    h2.font-light.m-b-xs
+      | Users
+    - if params[:approved] == "false"
+      small Listing Unapproved Users
+    - else
+      small Listing All Users
+
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body        
+        table.table cellpadding="1" cellspacing="1"
+          thead
+            tr
+              th Email
+              th Approved
+
+          - @users.each do |user|
+            tr
+              td = user.email
+              td = link_to user.approved ? "Yes" : "No", "javascript:void(0);", id: user.id, class: "approve_disapprove approve_#{user.id}"
