@@ -3,7 +3,7 @@
     #hbreadcrumb.pull-right.m-t-lg
       ol.hbreadcrumb.breadcrumb
         li          
-          = link_to 'Add Menu', new_menu_path, class: "btn btn-primary btn-xs"
+          = link_to 'Add', new_menu_path, class: "btn btn-primary btn-xs glyphicon glyphicon-plus"
         
 
     h2.font-light.m-b-xs
@@ -32,13 +32,11 @@
           tbody
             - @menus.each do |menu|
               tr
-                td = menu.name
+                td = link_to menu.name, menu
                 td = menu.price
                 td = menu.description
                 td = menu.category.name
-                td 
-                  = link_to 'Show', menu, class: "btn btn-primary btn-xs"
+                td
+                  = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
                   |  
-                  = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs"
-                  |  
-                  = link_to 'Destroy', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs"
+                  = link_to 'Remove', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"

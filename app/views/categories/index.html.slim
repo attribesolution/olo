@@ -3,7 +3,7 @@
     #hbreadcrumb.pull-right.m-t-lg
       ol.hbreadcrumb.breadcrumb
         li          
-          = link_to 'Add Category', new_category_path, class: "btn btn-primary btn-xs"
+          = link_to 'Add', new_category_path, class: "btn btn-primary btn-xs glyphicon glyphicon-plus"
         
 
     h2.font-light.m-b-xs
@@ -21,10 +21,11 @@
               th Category Name
               th Actions
 
-          - @categories.each do |category|
-            tr
-              td #{category.name}
-              td 
-                = link_to 'Edit', edit_category_path(category), class: "btn btn-primary btn-xs"
-                |                  
-                = link_to 'Destroy', category, data: {:confirm => 'Are you sure you want to delete this category? Any menus added under this category will also be removed.'}, :method => :delete, class: "btn btn-primary btn-xs"
+            - @categories.each do |category|
+              tr
+                td 
+                  = link_to category.name, menus_path(:q => {:name_or_description_or_category_name_cont => category.name})
+                td 
+                  = link_to 'Edit', edit_category_path(category), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
+                  |                  
+                  = link_to 'Remove', category, data: {:confirm => 'Are you sure you want to delete this category? Any menus added under this category will also be removed.'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
