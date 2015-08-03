@@ -10,10 +10,11 @@
     = f.hidden_field :image_cache
     = image_tag @category.image if @category.image?
 
-  p
-    label
-      = f.check_box :remove_image
-      | Remove image
+  - if @category.persisted? and @category.image?
+    p
+      label
+        = f.check_box :remove_image
+        | Remove image
 
   br
   .form-actions
