@@ -17,9 +17,10 @@
   .form-inputs
     = f.fields_for :menu_image do |p|
       = p.file_field :image, :multiple => true
-    - @menu.menu_images.each do |menu_image|
-      = image_tag menu_image.image
-      = link_to "Remove", menu_menu_image_path(@menu, menu_image), :method => :delete, :confirm => "Are you sure?"
+    - if @menu.persisted?
+      - @menu.menu_images.each do |menu_image|
+        = image_tag menu_image.image
+        = link_to "Remove", menu_menu_image_path(@menu, menu_image), :method => :delete, :confirm => "Are you sure?"
 
   br
   .form-actions
