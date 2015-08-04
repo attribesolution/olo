@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 	layout 'empty', only: [:index]
 
 	def index
-		@orders = Order.by_user(current_user.id).order(created_at: :desc)
+		@orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
 	end
 
 	def update_status

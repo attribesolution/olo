@@ -8,5 +8,5 @@
   - @orders.each_slice(2).each do |orders|
     .row.projects
       - orders.each do |order|
-        .col-lg-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.1s;") 
+        .col-lg-6.animated-panel.zoomIn.firstRow style=("-webkit-animation-delay: 0.1s;") 
           = render "orders/item", order: order
