@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  getNewOrders = ->
+    $.ajax(
+      type: 'GET'
+      url: '/orders/full_screen'
+      data: {"lastOrderId" : gon.lastOrderId, "pathname" : window.location.pathname}
+      dataType: 'script').success (json) ->
+      return
+      false
+  if gon.autoFetchNewOrders && gon.autoFetchNewOrders == true
+    setInterval (->
+      getNewOrders()
+      return
+    ), 5000

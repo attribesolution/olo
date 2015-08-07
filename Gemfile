@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'font-awesome-rails'
 gem 'ransack'
 gem 'kaminari'
+gem 'gon'
 
 group :development, :test do
   gem 'byebug'

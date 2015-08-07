@@ -6,13 +6,14 @@ Rails.application.routes.draw do
     resources :menu_images, :only => [:destroy]
   end
   resources :categories
-  root to: 'visitors#index'
+  root to: 'orders#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :users
 
   resources :orders do
     collection do
+      get :full_screen
       post :update_status
     end
   end

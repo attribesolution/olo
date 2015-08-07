@@ -1,0 +1,6 @@
+<% if @orders.any? %>
+  gon.lastOrderId = <%= @orders.first.id %>;
+  <% @orders.reverse.each do |order| %>
+      $('div.projects').prepend("<%= escape_javascript(render :partial => 'orders/item', :locals => { :order => order, :fullScreen => @fullScreen }) %>");
+  <% end %>
+<% end %>
