@@ -1,0 +1,20 @@
+#header
+  nav role="navigation" 
+
+    form.navbar-form-custom action="#" method="post" role="search" 
+      h1 orders
+    .navbar-right
+      ul.nav.navbar-nav.no-borders
+        li.dropdown
+          a href="#{root_path}" 
+            i.pe-7s-back          
+
+        li.dropdown
+          = link_to destroy_user_session_path, :method=>'delete' do
+            i.pe-7s-upload.pe-rotate-90
+
+br
+- if @orders.any?
+  .row.projects
+    - @orders.each do |order|
+      = render "orders/item", order: order, fullScreen: true

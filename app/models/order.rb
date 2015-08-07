@@ -6,6 +6,5 @@ class Order < ActiveRecord::Base
   as_enum :status, [:placed, :assigned, :delivered, :closed], map: :string
 
   scope :by_restaurant, lambda { |id| where(restaurant_owner_id: id) }
-
-  
+  scope :from_order, lambda { |id| where("id > ?", id) }
 end

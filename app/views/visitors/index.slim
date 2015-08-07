@@ -5,8 +5,6 @@
     small Listing Orders
 
 - if @orders.any?  
-  - @orders.each_slice(2).each do |orders|
-    .row.projects
-      - orders.each do |order|
-        .col-lg-6.animated-panel.zoomIn.firstRow style=("-webkit-animation-delay: 0.1s;") 
-          = render "orders/item", order: order
+  .row.projects
+    - @orders.each do |order|
+      = render "orders/item", order: order, fullScreen: false

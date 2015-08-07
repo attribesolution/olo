@@ -1,22 +1,10 @@
-#header
-  nav role="navigation" 
+.hpanel
+  .panel-body
+    h2.font-light.m-b-xs
+      | Orders
+    small Listing Orders
 
-    form.navbar-form-custom action="#" method="post" role="search" 
-      h1 orders
-    .navbar-right
-      ul.nav.navbar-nav.no-borders
-        li.dropdown
-          a href="#{root_path}" 
-            i.pe-7s-back          
-
-        li.dropdown
-          = link_to destroy_user_session_path, :method=>'delete' do
-            i.pe-7s-upload.pe-rotate-90
-
-br
 - if @orders.any?  
-  - @orders.each_slice(3).each do |orders|
-    .row.projects
-      - orders.each do |order|
-        .col-lg-4.animated-panel.zoomIn style=("-webkit-animation-delay: 0.1s;") 
-          = render "orders/item", order: order
+  .row.projects
+    - @orders.each do |order|
+      = render "orders/item", order: order, fullScreen: false

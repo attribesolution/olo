@@ -14,6 +14,9 @@ html
     
     /! Main javascript files
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    /! Include Gon
+    == Gon::Base.render_data({})
         
     = csrf_meta_tags
 
