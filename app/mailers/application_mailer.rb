@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "Dmenu <support@dmenu.co>"
+  default from: "Dmenu <team@dmenu.co>"
   # layout 'mailer'
 end
