@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
 
 	def index
     @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
+    gon.lastOrderId = @orders.first.id if @orders.any?
+    gon.autoFetchNewOrders = true
 	end
 
   def full_screen
@@ -14,7 +16,13 @@ class OrdersController < ApplicationController
       @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
     end
     gon.lastOrderId = @orders.first.id if @orders.any?
-    gon.fetchNewOrders = true
+    gon.autoFetchNewOrders = true
+
+    if params[:pathname] == "/orders/full_screen"
+      @fullScreen = true
+    else
+      @fullScreen = false
+    end
 
     respond_to :html, :js
   end

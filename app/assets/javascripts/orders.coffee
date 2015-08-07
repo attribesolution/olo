@@ -1,15 +1,13 @@
 $ ->
   getNewOrders = ->
-    value = {}
-    value = {"lastOrderId" : gon.lastOrderId}
     $.ajax(
       type: 'GET'
       url: '/orders/full_screen'
-      data: value
+      data: {"lastOrderId" : gon.lastOrderId, "pathname" : window.location.pathname}
       dataType: 'script').success (json) ->
       return
       false
-  if gon.fetchNewOrders && gon.fetchNewOrders == true
+  if gon.autoFetchNewOrders && gon.autoFetchNewOrders == true
     setInterval (->
       getNewOrders()
       return
