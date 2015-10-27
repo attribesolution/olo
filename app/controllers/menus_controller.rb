@@ -79,6 +79,16 @@ class MenusController < ApplicationController
     end
   end
 
+  def destroy_multiple
+
+    Menu.destroy(params[:menus_ids])
+
+    respond_to do |format|
+      format.html { redirect_to menus_path }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu

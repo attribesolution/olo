@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   resources :device_table_mappings
   resources :menus do
+    collection do
+      delete 'destroy_multiple'
     resources :menu_images, :only => [:destroy]
+    end
   end
+
   resources :categories do
     collection do
       delete 'destroy_multiple'
