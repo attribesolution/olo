@@ -3,9 +3,18 @@ Rails.application.routes.draw do
 
   resources :device_table_mappings
   resources :menus do
+    collection do
+      delete 'destroy_multiple'
     resources :menu_images, :only => [:destroy]
+    end
   end
-  resources :categories
+
+  resources :categories do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
+  
   root to: 'orders#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }

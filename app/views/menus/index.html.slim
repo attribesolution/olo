@@ -30,13 +30,16 @@
               th
 
           tbody
-            - @menus.each do |menu|
-              tr
-                td = link_to menu.name, menu
-                td = menu.price
-                td = menu.description
-                td = menu.category.name
-                td
-                  = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
-                  |  
-                  = link_to 'Remove', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
+            = form_tag destroy_multiple_menus_path, method: :delete do
+              = submit_tag "Delete selected"
+              - @menus.each do |menu|
+                tr
+                  td = check_box_tag "menus_ids[]", menu.id
+                  td = link_to menu.name, menu
+                  td = menu.price
+                  td = menu.description
+                  td = menu.category.name
+                  td
+                    = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
+                    |  
+                    = link_to 'Remove', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
