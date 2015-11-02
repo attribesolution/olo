@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20151102083508) do
     t.integer  "category_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.boolean  "approved",            default: true
+    t.boolean  "approved",            default: true, null: false
   end
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
