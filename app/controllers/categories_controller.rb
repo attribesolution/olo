@@ -65,7 +65,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy_multiple
-    Category.destroy(params[:categories_ids])
+    if params[:categories_ids]
+      Category.destroy(params[:categories_ids])
+    end
+    
     respond_to do |format|
       format.html { redirect_to categories_path}
       format.json { head :no_content }

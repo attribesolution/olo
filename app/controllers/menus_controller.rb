@@ -80,9 +80,9 @@ class MenusController < ApplicationController
   end
 
   def destroy_multiple
-
-    Menu.destroy(params[:menus_ids])
-
+    if params[:menus_ids]  
+      Menu.destroy(params[:menus_ids])
+    end
     respond_to do |format|
       format.html { redirect_to menus_path }
       format.json { head :no_content }
