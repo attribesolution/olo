@@ -4,5 +4,5 @@ h1 Editing menu
 
 = link_to 'Show', @menu
 '|
-= link_to 'Back', menus_path
+= link_to 'Back',  menus_path(:q => {:category_name_cont => @menu.category.name})
 
