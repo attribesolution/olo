@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :menu_images, :only => [:destroy]
     collection do
       delete 'destroy_multiple'
+      post :approve_disapprove_menus  
     end
   end
 
