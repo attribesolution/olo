@@ -89,6 +89,13 @@ class MenusController < ApplicationController
     end
   end
 
+  def approve_disapprove_menus
+    menu = Menu.find(params[:id])
+    menu.update_attribute(:approved, menu.approved ^= true)
+    msg = { :status => 200, :message => "Success!", :approved => menu.approved ? "Yes" : "No" }
+    render :json => msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
