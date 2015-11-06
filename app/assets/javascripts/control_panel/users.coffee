@@ -7,4 +7,4 @@ $ ->
 
     $.post "/control_panel/users/approve_disapprove", { id: id }, (data) ->
       if data.status == 200
-        $(".approve_menus" + id).html(data.approved)
+        $(".approve_" + id).html(data.approved)
