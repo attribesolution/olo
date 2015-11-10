@@ -2,7 +2,7 @@ class Api::V1::MenusController < ApiController
   before_action :verify_category
 
   def index
-    @menus = Menu.by_category_id(params[:category_id]).order('created_at DESC')
+    @menus = Menu.by_category_id(params[:category_id]).is_approved.order('created_at DESC')
     @base_url = request.protocol + request.host_with_port
   end
 
