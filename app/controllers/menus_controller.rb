@@ -6,7 +6,7 @@ class MenusController < ApplicationController
   # GET /menus.json
   def index
     @q = Menu.ransack(params[:q])
-    @menus = @q.result.includes(:category).by_restaurant_owner(current_user.id).page(params[:page])
+    @menus = @q.result.includes(:category).by_restaurant_owner(current_user.id).order(created_at: :desc).page(params[:page])
   end
 
   # GET /menus/1
