@@ -7,4 +7,8 @@ class Category < ActiveRecord::Base
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
 
   validates_presence_of :name
+
+  def active_menus
+	  self.menus.is_active
+  end
 end
