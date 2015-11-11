@@ -15,6 +15,7 @@
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
     .hpanel     
       .panel-body        
+        = paginate @menus
         = search_form_for @q do |f|
           = f.search_field :name_or_description_or_category_name_cont
           = f.submit "search"
@@ -46,3 +47,4 @@
                     = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
                     |  
                     = link_to 'Remove', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
+        = paginate @menus
