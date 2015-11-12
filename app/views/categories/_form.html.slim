@@ -6,6 +6,9 @@
     = f.input :name, label: false, placeholder: "Category Name", class: 'form-control'
 
   .form-inputs
+    = f.hidden_field :dirty, as: :boolean, value: true, class: 'form-control'   
+
+  .form-inputs
     = f.file_field :image, class: 'form-control'
     = f.hidden_field :image_cache
     = image_tag @category.image if @category.image?

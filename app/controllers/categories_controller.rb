@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.by_restaurant_owner(current_user.id)
+    @categories = Category.by_restaurant_owner(current_user.id).order(created_at: :desc)
   end
 
   # GET /categories/1
@@ -83,6 +83,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :image, :remove_image, :image_cache)
+      params.require(:category).permit(:name, :image, :remove_image, :image_cache, :dirty)
     end
 end

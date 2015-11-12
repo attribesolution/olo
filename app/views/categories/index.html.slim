@@ -20,6 +20,7 @@
             tr
               th
               th Category Name
+              th Dirty
               th Actions
 
             = form_tag destroy_multiple_categories_path, method: :delete do 
@@ -30,6 +31,8 @@
                     = check_box_tag "categories_ids[]", category.id
                   td 
                     = link_to category.name, menus_path(:q => {:name_or_description_or_category_name_cont => category.name})
+                  td
+                    = category.dirty ? "Yes" : "No"
                   td 
                     = link_to 'Edit', edit_category_path(category), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
                     |                  
