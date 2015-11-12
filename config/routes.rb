@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       delete 'destroy_multiple'
       post :approve_disapprove_menus  
+      post :add_dirty_menus
     end
   end
 

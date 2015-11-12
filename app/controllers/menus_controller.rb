@@ -36,6 +36,7 @@ class MenusController < ApplicationController
       if @menu.save
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
+      binding.pry
       else
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
@@ -96,6 +97,13 @@ class MenusController < ApplicationController
     render :json => msg
   end
 
+   def add_dirty_menus
+    menu = Menu.find(params[:id])
+    menu.update_attribute(:dirty, menu.dirty ^= true)
+    msg = { :status => 200, :message => "Success!", :dirty => menu.dirty ? "Yes" : "No" }
+    render :json => msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
@@ -104,6 +112,6 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :price, :description, :category_id)
+      params.require(:menu).permit(:name, :price, :description, :category_id, :dirty)
     end
 end
