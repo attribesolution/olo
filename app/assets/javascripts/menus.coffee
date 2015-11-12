@@ -9,10 +9,3 @@ $ ->
     $.post "/menus/approve_disapprove_menus", { id: id }, (data) ->
       if data.status == 200
         $(".approve_menus_" + id).html(data.approved)######
-$ ->
-  $(".add_dirty_menus").click ->
-    id = $(this).attr("id")
-
-    $.post "/menus/add_dirty_menus", { id: id }, (data) ->
-      if data.status == 200
-        $(".dirty_menus_" + id).html(data.dirty)
