@@ -31,6 +31,9 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       if @category.save
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
@@ -45,6 +48,9 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else

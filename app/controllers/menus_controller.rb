@@ -34,9 +34,11 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
-      binding.pry
       else
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
@@ -52,6 +54,9 @@ class MenusController < ApplicationController
     
     respond_to do |format|
       if @menu.update(menu_params)
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }
       else
