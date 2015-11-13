@@ -11,4 +11,8 @@ class Category < ActiveRecord::Base
   def active_menus
 	  self.menus.is_active
   end
+  
+  def dirty_menus
+	  self.menus.is_dirty
+  end
 end

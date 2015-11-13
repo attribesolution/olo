@@ -6,6 +6,7 @@ class Menu < ActiveRecord::Base
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
   scope :by_category_id, lambda{|id| where(category_id: id)}
   scope :is_active, -> {where(approved: true)}
+  scope :is_dirty, -> {where(dirty: true)}
 
   validates_presence_of :name, :price, :category
   validates :price, :numericality => { :greater_than => 0 }

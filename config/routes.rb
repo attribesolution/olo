@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       resources :categories do
         collection do
           get :sync
+          get :dirty
         end
       end
       resources :menus
