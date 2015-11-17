@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     collection do
       delete 'destroy_multiple'
       post :approve_disapprove_menus  
-      post :add_dirty_menus
     end
   end
 
@@ -44,7 +43,12 @@ Rails.application.routes.draw do
         end
       end
       resources :menus
-      resources :devices
+      
+      resources :devices do
+        collection do
+          post :updated
+        end
+      end
       resources :orders
       resource :user do
         get :get_api_key, on: :member
