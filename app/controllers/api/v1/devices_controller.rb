@@ -30,6 +30,7 @@ class Api::V1::DevicesController < ApiController
     menus = Menu.where(restaurant_owner_id: restaurant_id)
     menus.each do |menu|
       menu.dirty == false 
+    end
 
 
   end
