@@ -39,10 +39,16 @@ Rails.application.routes.draw do
       resources :categories do
         collection do
           get :sync
+          get :dirty
         end
       end
       resources :menus
-      resources :devices
+      
+      resources :devices do
+        collection do
+          post :updated
+        end
+      end
       resources :orders
       resource :user do
         get :get_api_key, on: :member

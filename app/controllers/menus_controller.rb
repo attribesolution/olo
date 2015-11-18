@@ -34,6 +34,10 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+          device.save
+        end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
@@ -51,6 +55,10 @@ class MenusController < ApplicationController
     
     respond_to do |format|
       if @menu.update(menu_params)
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+          device.save
+        end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }
       else
@@ -92,7 +100,20 @@ class MenusController < ApplicationController
   def approve_disapprove_menus
     menu = Menu.find(params[:id])
     menu.update_attribute(:approved, menu.approved ^= true)
+    menu.dirty = true
+    menu.save
+    current_user.device_table_mappings.each do |device|
+      device.updated = false
+      device.save
+    end
     msg = { :status => 200, :message => "Success!", :approved => menu.approved ? "Yes" : "No" }
+    render :json => msg
+  end
+
+   def add_dirty_menus
+    menu = Menu.find(params[:id])
+    menu.update_attribute(:dirty, menu.dirty ^= true)
+    msg = { :status => 200, :message => "Success!", :dirty => menu.dirty ? "Yes" : "No" }
     render :json => msg
   end
 
@@ -104,6 +125,6 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :price, :description, :category_id)
+      params.require(:menu).permit(:name, :price, :description, :category_id, :dirty)
     end
 end

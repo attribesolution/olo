@@ -1,5 +1,5 @@
 class Api::V1::DevicesController < ApiController
-  before_action :check_required_params, :validates_uniqueness
+  before_action :check_required_params, :validates_uniqueness, only: [:create]
   skip_before_action :authenticate_api_request
 
   def create
@@ -11,6 +11,47 @@ class Api::V1::DevicesController < ApiController
       render :json => { message: e.message, key: "", :status => 501 }
     end
   end
+
+  def updated
+    
+    @device = DeviceTableMapping.where(device_id: params[:device_id])
+      if @device.any?
+        @device.first.updated = true
+        @device.first.save
+        check_dirty
+        return render :json => { message: "Device updated successfully.", :status => 200 }
+      else
+
+       return render :json => { message: "Device ID is required.", :status => 423 }
+      end
+  end
+
+  def check_dirty
+    flag = true
+    restaurant_id = @device.first.restaurant_owner_id
+    devices = DeviceTableMapping.where(restaurant_owner_id: restaurant_id)
+    devices.each do |device|
+      if device.updated == false
+        flag = false
+        break
+      end
+    end  
+    if flag == true
+     menus = Menu.where(restaurant_owner_id: restaurant_id)
+        menus.each do |menu|
+        menu.dirty = false 
+        menu.save
+        end
+        categories = Category.where(restaurant_owner_id: restaurant_id)
+        categories.each do |category|
+        category.dirty = false 
+        category.save
+        end
+      else
+        return
+      end  
+  end    
+
 
   def check_required_params
     @device_id = params[:device_id]

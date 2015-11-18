@@ -12,6 +12,9 @@
     = f.input :description, label: false, placeholder: "Description", class: 'form-control'
 
   .form-inputs
+    = f.hidden_field :dirty, as: :boolean, value: true, class: 'form-control' 
+
+  .form-inputs
     = f.association :category, collection: current_user.categories, label: false, prompt: "Select a category"
   
   .form-inputs

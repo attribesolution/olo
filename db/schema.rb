@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102083508) do
+ActiveRecord::Schema.define(version: 20151112132411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,18 +19,20 @@ ActiveRecord::Schema.define(version: 20151102083508) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "restaurant_owner_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "image"
+    t.boolean  "dirty",               default: false, null: false
   end
 
   create_table "device_table_mappings", force: :cascade do |t|
     t.string   "device_id"
     t.string   "device_name"
     t.string   "table_no"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "restaurant_owner_id"
+    t.boolean  "updated",             default: true
   end
 
   add_index "device_table_mappings", ["device_id", "restaurant_owner_id"], name: "unique_devices_per_restaurant", unique: true, using: :btree
@@ -51,9 +53,10 @@ ActiveRecord::Schema.define(version: 20151102083508) do
     t.text     "description"
     t.integer  "restaurant_owner_id"
     t.integer  "category_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.boolean  "approved",            default: true, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "approved",            default: true,  null: false
+    t.boolean  "dirty",               default: false, null: false
   end
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree

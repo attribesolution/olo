@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.by_restaurant_owner(current_user.id)
+    @categories = Category.by_restaurant_owner(current_user.id).order(created_at: :desc)
   end
 
   # GET /categories/1
@@ -31,6 +31,9 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       if @category.save
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
@@ -45,6 +48,9 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
+        current_user.device_table_mappings.each do |device|
+          device.updated = false
+        end
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
@@ -83,6 +89,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :image, :remove_image, :image_cache)
+      params.require(:category).permit(:name, :image, :remove_image, :image_cache, :dirty)
     end
 end
