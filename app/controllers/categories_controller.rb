@@ -33,7 +33,6 @@ class CategoriesController < ApplicationController
       if @category.save
         current_user.device_table_mappings.each do |device|
           device.updated = false
-          device.save
         end
         format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
@@ -51,7 +50,6 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         current_user.device_table_mappings.each do |device|
           device.updated = false
-          device.save
         end
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }

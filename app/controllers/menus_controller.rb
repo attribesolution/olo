@@ -100,6 +100,12 @@ class MenusController < ApplicationController
   def approve_disapprove_menus
     menu = Menu.find(params[:id])
     menu.update_attribute(:approved, menu.approved ^= true)
+    menu.dirty = true
+    menu.save
+    current_user.device_table_mappings.each do |device|
+      device.updated = false
+      device.save
+    end
     msg = { :status => 200, :message => "Success!", :approved => menu.approved ? "Yes" : "No" }
     render :json => msg
   end
