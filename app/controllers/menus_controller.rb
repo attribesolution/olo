@@ -36,6 +36,7 @@ class MenusController < ApplicationController
       if @menu.save
         current_user.device_table_mappings.each do |device|
           device.updated = false
+          device.save
         end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
@@ -56,6 +57,7 @@ class MenusController < ApplicationController
       if @menu.update(menu_params)
         current_user.device_table_mappings.each do |device|
           device.updated = false
+          device.save
         end
         format.html { redirect_to menus_path(:q => {:category_name_cont => @menu.category.name}), notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }

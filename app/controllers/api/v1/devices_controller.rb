@@ -17,23 +17,41 @@ class Api::V1::DevicesController < ApiController
     @device = DeviceTableMapping.where(device_id: params[:device_id])
       if @device.any?
         @device.first.updated = true
+        @device.first.save
         check_dirty
-        return render :json => { message: "Device mapped successfully.", :status => 200 }
+        return render :json => { message: "Device updated successfully.", :status => 200 }
       else
 
-       return render :json => { message: "Device Name is required.", :status => 423 }
+       return render :json => { message: "Device ID is required.", :status => 423 }
       end
   end
 
   def check_dirty
+    flag = true
     restaurant_id = @device.first.restaurant_owner_id
-    menus = Menu.where(restaurant_owner_id: restaurant_id)
-    menus.each do |menu|
-      menu.dirty == false 
-    end
+    devices = DeviceTableMapping.where(restaurant_owner_id: restaurant_id)
+    devices.each do |device|
+      if device.updated == false
+        flag = false
+        break
+      end
+    end  
+    if flag == true
+     menus = Menu.where(restaurant_owner_id: restaurant_id)
+        menus.each do |menu|
+        menu.dirty = false 
+        menu.save
+        end
+        categories = Category.where(restaurant_owner_id: restaurant_id)
+        categories.each do |category|
+        category.dirty = false 
+        category.save
+        end
+      else
+        return
+      end  
+  end    
 
-
-  end
 
   def check_required_params
     @device_id = params[:device_id]
