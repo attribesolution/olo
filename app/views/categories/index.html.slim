@@ -34,6 +34,8 @@
                   td
                     = category.dirty ? "Yes" : "No"
                   td 
+                    = link_to 'Show', category, class: "btn btn-primary btn-xs glyphicon glyphicon-show"
+                    |
                     = link_to 'Edit', edit_category_path(category), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
                     |                  
                     = link_to 'Remove', category, data: {:confirm => 'Are you sure you want to delete this category? Any menus added under this category will also be removed.'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
