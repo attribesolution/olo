@@ -5,7 +5,7 @@ class DeviceTableMappingsController < ApplicationController
   # GET /device_table_mappings
   # GET /device_table_mappings.json
   def index
-    @device_table_mappings = DeviceTableMapping.by_restaurant_owner(current_user.id)
+    @device_table_mappings = DeviceTableMapping.by_restaurant_owner(current_user.id).order('created_at DESC')
   end
 
   # GET /device_table_mappings/1
