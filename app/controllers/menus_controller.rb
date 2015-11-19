@@ -110,13 +110,6 @@ class MenusController < ApplicationController
     render :json => msg
   end
 
-   def add_dirty_menus
-    menu = Menu.find(params[:id])
-    menu.update_attribute(:dirty, menu.dirty ^= true)
-    msg = { :status => 200, :message => "Success!", :dirty => menu.dirty ? "Yes" : "No" }
-    render :json => msg
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
