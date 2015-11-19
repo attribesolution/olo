@@ -46,6 +46,8 @@
                   td = menu.category.name
                   td = link_to menu.approved ? "Yes" : "No", "javascript:void(0);", id: menu.id, class: "approve_disapprove_menus approve_menus_#{menu.id}"
                   td
+                    = link_to 'Show' ,menu, class: "btn btn-primary btn-xs glyphicon glyphicon-show"
+                    |
                     = link_to 'Edit', edit_menu_path(menu), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
                     |  
                     = link_to 'Remove', menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
