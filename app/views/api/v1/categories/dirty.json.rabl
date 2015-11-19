@@ -1,4 +1,4 @@
-collection @categories, :object_root => false
+collection @categories.category_dirty, :object_root => false
 attributes :id, :name, :created_at, :updated_at
 
 node(:image) { |category| @base_url + category.image.url unless category.image.url.nil? }

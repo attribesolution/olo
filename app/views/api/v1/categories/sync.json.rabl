@@ -4,7 +4,7 @@ attributes :id, :name, :created_at, :updated_at
 node(:image) { |category| @base_url + category.image.url unless category.image.url.nil? }
 
 child :active_menus, :object_root => false do
-  attributes :id, :name, :price, :description, :category_id, :created_at, :updated_at
+  attributes :id, :name, :price, :description, :category_id, :created_at, :updated_at, :approved
 
   child :menu_images, :root => "images", :object_root => false do
     attributes :id, :created_at, :updated_at

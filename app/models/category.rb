@@ -5,13 +5,14 @@ class Category < ActiveRecord::Base
   mount_uploader :image, CategoryImageUploader
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
+  scope :category_dirty, -> {where(dirty: true)}
 
   validates_presence_of :name
 
   def active_menus
 	  self.menus.is_active
   end
-  
+
   def dirty_menus
 	  self.menus.is_dirty
   end

@@ -43,8 +43,7 @@ Rails.application.routes.draw do
         end
       end
       resources :menus
-      
-      resources :devices do
+        resources :devices do
         collection do
           post :updated
         end
