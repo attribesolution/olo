@@ -1,5 +1,5 @@
 class Api::V1::CategoriesController < ApiController
-
+  before_filter :check_required_params, :check_device, only: [:dirty]
   def index
     @categories = @user.categories.order('created_at DESC')
     @base_url = request.protocol + request.host_with_port
@@ -11,9 +11,23 @@ class Api::V1::CategoriesController < ApiController
   end
 
   def dirty
-    @categories = @user.categories.order('created_at DESC')
-    @base_url = request.protocol + request.host_with_port
+    if @device.first.updated == false
+      @categories = @user.categories.order('created_at DESC')
+      @base_url = request.protocol + request.host_with_port
+    else
+      return render :json => { message: "Device is already updated.", :status => 200 }
+    end
   end
 
 
+  private
+  def check_required_params
+    @device_id = params[:device_id]
+    return render :json => { message: "Device ID is required.", :status => 422 } if @device_id.blank?
+  end
+
+  def check_device
+    @device = DeviceTableMapping.where(device_id: @device_id)
+    return render :json => { message: "Device ID does not exists.", :status => 422 } unless @device.any?
+  end
 end
