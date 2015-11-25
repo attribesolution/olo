@@ -3,7 +3,7 @@
   br
 
   .form-inputs
-    = f.input :name, label: false, placeholder: "Category Name", class: 'form-control'
+    = f.input :name, label: false, placeholder: "Category Name"
 
   .form-inputs
     = f.hidden_field :dirty, as: :boolean, value: true, class: 'form-control'   
@@ -21,6 +21,7 @@
 
   br
   .form-actions
-    = f.submit "Add", class: "btn btn-primary"
+    = f.submit "Add", id: "add_button", class: "btn btn-primary", disabled: true
+
     |  
     = link_to 'Back', categories_path, class: "btn btn-default"
