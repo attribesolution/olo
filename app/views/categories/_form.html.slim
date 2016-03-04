@@ -4,6 +4,7 @@
 
   .form-inputs
     = f.input :name, label: false, placeholder: "Category Name", class: 'form-control'
+    = f.input :parent_id, collection: Category.all
 
   .form-inputs
     = f.hidden_field :dirty, as: :boolean, value: true, class: 'form-control'   

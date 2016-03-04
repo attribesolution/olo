@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112132411) do
+ActiveRecord::Schema.define(version: 20160304140202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20151112132411) do
     t.datetime "updated_at",                          null: false
     t.string   "image"
     t.boolean  "dirty",               default: false, null: false
+    t.integer  "parent_id"
   end
 
   create_table "device_table_mappings", force: :cascade do |t|
