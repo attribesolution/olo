@@ -38,3 +38,6 @@ class Category < ActiveRecord::Base
   end
 
 end
+
+
+## Ref: https://www.leighhalliday.com/tree-structures-in-your-rails-models
