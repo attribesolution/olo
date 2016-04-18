@@ -16,16 +16,27 @@
 .row
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
     .hpanel     
-      .panel-body        
-        table.table cellpadding="1" cellspacing="1"
-          thead
-            tr
-              th
-              th Category Name
-              th Dirty
-              th Actions
+      .panel-body.cat_list
+        /
+          table.table cellpadding="1" cellspacing="1"
+            thead
+              tr
+                th
+                th Category Name
+                th Dirty
+                th Actions
+              
+              
 
-            = form_tag destroy_multiple_categories_path, method: :delete do 
-              = submit_tag "Delete Selected", class: "btn btn-primary btn-xs"
-              - @categories.each do |category|
-                = render partial: "category_item", locals: { category: category }
+              = form_tag destroy_multiple_categories_path, method: :delete do 
+                = submit_tag "Delete Selected", class: "btn btn-primary btn-xs"
+                - @categories.each do |category|
+                  = render partial: "category_item", locals: { category: category }
+        
+        hr
+        table 
+          = options_for_select(nested_set_options(Category) {|i| render partial: "child_category_item", locals: {item: i} } )
+
+.comments
+  = nested_li(Category.all) do |category|
+    = category.name

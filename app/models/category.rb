@@ -4,6 +4,11 @@ class Category < ActiveRecord::Base
   has_many :children, class_name: "Category", foreign_key: "parent_id"
   has_many :menus, dependent: :destroy
 
+  acts_as_nested_set  :before_add     => :do_before_add_stuff,
+                      :after_add      => :do_after_add_stuff,
+                      :before_remove  => :do_before_remove_stuff,
+                      :after_remove   => :do_after_remove_stuff
+
   mount_uploader :image, CategoryImageUploader
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
@@ -36,6 +41,25 @@ class Category < ActiveRecord::Base
   def has_children?
     children.exists?
   end
+
+  private
+
+    def do_before_add_stuff(child_node)
+      # do whatever with the child
+    end
+
+    def do_after_add_stuff(child_node)
+      binding.pry
+      # do whatever with the child
+    end
+
+    def do_before_remove_stuff(child_node)
+      # do whatever with the child
+    end
+
+    def do_after_remove_stuff(child_node)
+      # do whatever with the child
+    end
 
 end
 
