@@ -6,7 +6,7 @@ class ApiController < ApplicationController
     api_key = request.headers["HTTP_AUTHORIZATION"]
     @user = User.where(api_key: api_key).first
   
-    render :json => { :status => 401, message: "API key is required." } if api_key.blank?
-    render :json => { :status => 401, message: "Invalid API key." } if @user.nil?
+    return render :json => { :status => 401, message: "API key is required." } if api_key.blank?
+    return render :json => { :status => 401, message: "Invalid API key." } if @user.nil?
   end
 end

@@ -1,10 +1,14 @@
 class Api::V1::OrdersController < ApiController
   before_action :get_device_table_mapping, only: [:create]
   before_action :get_table_no, only: [:create]
+  
+  def index
+    @orders = @user.orders.order('created_at DESC')
+  end
 
 	def create
     @order = Order.create(table_no: @table_no, order_total: params[:order_total], restaurant_owner_id: @user.id, device_table_mapping_id: @device.first.id)
-    order_detail = params[:order_detail]
+    @order_detail = params[:order_detail]
         
     order_detail.each do |detail|
       OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_price: detail[:item_price], item_name: detail[:item_name])
