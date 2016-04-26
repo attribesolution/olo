@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416142004) do
+ActiveRecord::Schema.define(version: 20160426091609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160416142004) do
     t.datetime "updated_at",                          null: false
     t.boolean  "approved",            default: true,  null: false
     t.boolean  "dirty",               default: false, null: false
+    t.float    "original_price"
+    t.string   "serving"
   end
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
