@@ -1,4 +1,5 @@
 class OptionCategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_option_category, only: [:show, :edit, :update, :destroy]
 
   # GET /option_categories
@@ -70,6 +71,6 @@ class OptionCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def option_category_params
-      params.require(:option_category).permit(:name, :user_id, :multiple_choice, :required)
+      params.require(:option_category).permit(:name, :multiple_choice, :required)
     end
 end
