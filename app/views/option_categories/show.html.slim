@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @option_category.name
+p
+  strong User:
+  = @option_category.user_id
+p
+  strong Multiple choice:
+  = @option_category.multiple_choice
+p
+  strong Required:
+  = @option_category.required
+
+= link_to 'Edit', edit_option_category_path(@option_category)
+'|
+= link_to 'Back', option_categories_path

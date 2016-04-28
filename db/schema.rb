@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426091609) do
+ActiveRecord::Schema.define(version: 20160428104400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 20160426091609) do
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
   add_index "menus", ["category_id"], name: "index_menus_on_category_id", using: :btree
+
+  create_table "option_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.boolean  "multiple_choice"
+    t.boolean  "required"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "order_details", force: :cascade do |t|
     t.integer  "order_id"

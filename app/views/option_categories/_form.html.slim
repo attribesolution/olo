@@ -1,0 +1,11 @@
+= simple_form_for(@option_category) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :user_id
+    = f.input :multiple_choice
+    = f.input :required
+
+  .form-actions
+    = f.button :submit

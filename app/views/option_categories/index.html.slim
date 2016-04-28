@@ -1,0 +1,27 @@
+h1 Listing option_categories
+
+table
+  thead
+    tr
+      th Name
+      th User
+      th Multiple choice
+      th Required
+      th
+      th
+      th
+
+  tbody
+    - @option_categories.each do |option_category|
+      tr
+        td = option_category.name
+        td = option_category.user_id
+        td = option_category.multiple_choice
+        td = option_category.required
+        td = link_to 'Show', option_category
+        td = link_to 'Edit', edit_option_category_path(option_category)
+        td = link_to 'Destroy', option_category, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Option category', new_option_category_path
