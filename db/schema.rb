@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20160428104400) do
 
   create_table "option_categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
+    t.integer  "restaurant_owner_id"
     t.boolean  "multiple_choice"
     t.boolean  "required"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "order_details", force: :cascade do |t|

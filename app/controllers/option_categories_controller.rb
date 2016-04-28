@@ -25,6 +25,7 @@ class OptionCategoriesController < ApplicationController
   # POST /option_categories.json
   def create
     @option_category = OptionCategory.new(option_category_params)
+    @option_category.restaurant_owner_id = current_user.id
 
     respond_to do |format|
       if @option_category.save
