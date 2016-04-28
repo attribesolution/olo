@@ -9,6 +9,12 @@
     = f.input :price, label: false, placeholder: "Price", class: 'form-control'
 
   .form-inputs
+    = f.input :original_price, label: false, placeholder: "Original Price", class: 'form-control'
+
+  .form-inputs
+    = f.input :serving, label: false, placeholder: "Serving", class: 'form-control'
+
+  .form-inputs
     = f.input :description, label: false, placeholder: "Description", class: 'form-control'
 
   .form-inputs
@@ -24,7 +30,6 @@
       - @menu.menu_images.each do |menu_image|
         = image_tag menu_image.image
         = link_to "Remove", menu_menu_image_path(@menu, menu_image), :method => :delete, :confirm => "Are you sure?"
-
   br
   .form-actions
     = f.submit "Add", class: "btn btn-primary"
