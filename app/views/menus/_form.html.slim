@@ -30,6 +30,12 @@
       - @menu.menu_images.each do |menu_image|
         = image_tag menu_image.image
         = link_to "Remove", menu_menu_image_path(@menu, menu_image), :method => :delete, :confirm => "Are you sure?"
+
+  = f.simple_fields_for :option_categories do |option_category|
+    = render 'option_category_fields', f: option_category
+  .links
+    = link_to_add_association 'add option category', f, :option_categories
+
   br
   .form-actions
     = f.submit "Add", class: "btn btn-primary"

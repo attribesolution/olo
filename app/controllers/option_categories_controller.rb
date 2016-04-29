@@ -71,6 +71,6 @@ class OptionCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def option_category_params
-      params.require(:option_category).permit(:name, :multiple_choice, :required)
+      params.require(:option_category).permit(:name, :multiple_choice, :required, :restaurant_owner_id)
     end
 end

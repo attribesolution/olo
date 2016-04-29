@@ -1,6 +1,8 @@
 class Menu < ActiveRecord::Base
   belongs_to :category
   has_many :menu_images, dependent: :destroy
+	has_many :option_categories, dependent: :destroy
+  accepts_nested_attributes_for :option_categories, reject_if: :all_blank, allow_destroy: true
   belongs_to :restaurant_owner, :class_name => "User", :foreign_key => "restaurant_owner_id"
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
