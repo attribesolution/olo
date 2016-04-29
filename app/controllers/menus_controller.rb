@@ -12,7 +12,6 @@ class MenusController < ApplicationController
   # GET /menus/1
   # GET /menus/1.json
   def show
-    @option_category = @menu.option_categories.new
   end
 
   # GET /menus/new
