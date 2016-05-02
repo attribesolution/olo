@@ -21,7 +21,30 @@ p
       = image_tag mp.image
       = link_to "Remove", menu_menu_image_path(@menu, mp), :method => :delete, :confirm => "Are you sure?"
 
+h1 Listing option categories
 
+table
+  thead
+    tr
+      th Name
+      th Multiple choice
+      th Required
+      th
+      th
+      th
+
+  tbody
+    - @menu.option_categories.each do |option_category|
+      tr
+        td = option_category.name
+        td = option_category.multiple_choice
+        td = option_category.required
+        td = link_to 'Show', option_category
+        td = link_to 'Destroy', option_category, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+= link_to 'Add Options Category', new_option_category_path
+br
+br
 = link_to 'Edit', edit_menu_path(@menu)
 '|
 = link_to 'Back', menus_path(:q => {:category_name_cont => @menu.category.name})

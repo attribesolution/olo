@@ -2,9 +2,14 @@
   = f.error_notification
 
   .form-inputs
+    = f.association :menu, collection: current_user.menus, label: false, prompt: "Select a menu", :selected => "menu_id"
+  .form-inputs
     = f.input :name
     = f.input :multiple_choice
     = f.input :required
-
+  = f.simple_fields_for :menu_options do |menu_option|
+    = render 'menu_option_fields', f: menu_option
+  .links
+    = link_to_add_association 'add menu options', f, :menu_options
   .form-actions
     = f.button :submit

@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( option_categories.css )
 Rails.application.config.assets.precompile += %w( option_categories.js )
+Rails.application.config.assets.precompile += %w( menu_options.css )
+Rails.application.config.assets.precompile += %w( menu_options.js )

@@ -58,7 +58,7 @@ class OptionCategoriesController < ApplicationController
   def destroy
     @option_category.destroy
     respond_to do |format|
-      format.html { redirect_to option_categories_url, notice: 'Option category was successfully destroyed.' }
+      format.html { redirect_to menus_url, notice: 'Option category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class OptionCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def option_category_params
-      params.require(:option_category).permit(:name, :multiple_choice, :required, :restaurant_owner_id)
+      params.require(:option_category).permit(:name, :multiple_choice, :required, :restaurant_owner_id, :menu_id, menu_options_attributes: [:id, :name, :price, :option_category_id, :_destroy])
     end
 end

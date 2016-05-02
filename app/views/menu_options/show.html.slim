@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @menu_option.name
+p
+  strong Price:
+  = @menu_option.price
+p
+  strong Option category:
+  = @menu_option.option_category_id
+
+= link_to 'Edit', edit_menu_option_path(@menu_option)
+'|
+= link_to 'Back', menu_options_path

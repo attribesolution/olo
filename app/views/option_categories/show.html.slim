@@ -10,6 +10,24 @@ p
   strong Required:
   = @option_category.required
 
+h1 Listing menu options
+
+table
+  thead
+    tr
+      th Name
+      th Price
+      th 
+      th
+
+  tbody
+    - @option_category.menu_options.each do |menu_option|
+      tr
+        td = menu_option.name
+        td = menu_option.price
+
+= link_to 'New menu option', new_menu_option_path
+br
 = link_to 'Edit', edit_option_category_path(@option_category)
 '|
 = link_to 'Back', option_categories_path

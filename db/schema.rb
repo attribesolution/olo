@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429143820) do
+ActiveRecord::Schema.define(version: 20160502124114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20160429143820) do
   end
 
   add_index "menu_images", ["menu_id"], name: "index_menu_images_on_menu_id", using: :btree
+
+  create_table "menu_options", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.integer  "option_category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "menu_id"
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "name"

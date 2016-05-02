@@ -1,0 +1,11 @@
+= simple_form_for(@menu_option) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :option_category, collection: current_user.option_categories, label: false, prompt: "Select a category", :selected => 'option_category.id'
+  .form-inputs
+    = f.input :name
+    = f.input :price
+
+  .form-actions
+    = f.button :submit

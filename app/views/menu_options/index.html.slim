@@ -1,0 +1,25 @@
+h1 Listing menu_options
+
+table
+  thead
+    tr
+      th Name
+      th Price
+      th Option category
+      th
+      th
+      th
+
+  tbody
+    - @menu_options.each do |menu_option|
+      tr
+        td = menu_option.name
+        td = menu_option.price
+        td = menu_option.option_category_id
+        td = link_to 'Show', menu_option
+        td = link_to 'Edit', edit_menu_option_path(menu_option)
+        td = link_to 'Destroy', menu_option, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Menu option', new_menu_option_path
