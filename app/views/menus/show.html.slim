@@ -42,7 +42,7 @@ table
         td = link_to 'Show', option_category
         td = link_to 'Destroy', option_category, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'Add Options Category', new_option_category_path
+= link_to 'Add Options Category', new_option_category_path(menu_id: params[:id])
 br
 br
 = link_to 'Edit', edit_menu_path(@menu)

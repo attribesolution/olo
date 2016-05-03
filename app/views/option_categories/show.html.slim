@@ -26,7 +26,7 @@ table
         td = menu_option.name
         td = menu_option.price
 
-= link_to 'New menu option', new_menu_option_path
+= link_to 'New menu option', new_menu_option_path(option_category_id: params[:id])
 br
 = link_to 'Edit', edit_option_category_path(@option_category)
 '|

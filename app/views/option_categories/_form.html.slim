@@ -2,8 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :menu, collection: current_user.menus, label: false, prompt: "Select a menu", :selected => "menu_id"
-  .form-inputs
+    = f.association :menu, collection: current_user.menus, label: false, prompt: "Select a menu", :selected => params[:menu_id]
     = f.input :name
     = f.input :multiple_choice
     = f.input :required
