@@ -16,9 +16,19 @@ table
         td = menu_option.name
         td = menu_option.price
         td = menu_option.option_category_id
-        td = link_to 'Show', menu_option
-        td = link_to 'Edit', edit_menu_option_path(menu_option)
-        td = link_to 'Destroy', menu_option, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td
+          = link_to menu_option, class: "btn btn-primary btn-xs" do
+            i.fa.fa-eye
+            |  Show
+          ||
+          = link_to edit_menu_option_path(menu_option), class: "btn btn-primary btn-xs" do
+            i.fa.fa-edit
+            |  Edit
+          ||
+          = link_to menu_option, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs" do
+            i.fa.fa-remove
+            |  Remove
+          |
 
 br
 

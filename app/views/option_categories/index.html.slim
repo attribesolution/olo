@@ -11,15 +11,6 @@ table
       th
 
   tbody
-    - @option_categories.each do |option_category|
-      tr
-        td = option_category.name
-        td = option_category.multiple_choice
-        td = option_category.required
-        td = link_to 'Show', option_category
-        td = link_to 'Edit', edit_option_category_path(option_category)
-        td = link_to 'Destroy', option_category, data: {:confirm => 'Are you sure?'}, :method => :delete
-
+    == render 'index.html.slim'
 br
-
 = link_to 'New Option category', new_option_category_path
