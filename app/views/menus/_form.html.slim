@@ -33,8 +33,9 @@
 
   = f.simple_fields_for :option_categories do |option_category|
     = render 'option_category_fields', f: option_category
+  br
   .links
-    = link_to_add_association 'add option category', f, :option_categories
+    = link_to_add_association 'add option category', f, :option_categories, class:"btn btn-primary btn-xs"
 
   br
   .form-actions

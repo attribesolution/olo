@@ -4,4 +4,4 @@
   = f.input :required, as: :boolean
   = f.input :restaurant_owner_id, input_html: { value: current_user.id }, as: "hidden"
   br
-	= link_to_remove_association "remove option category", f, data: {confirm: 'Are you sure?'}
+	= link_to_remove_association "remove option category", f, data: {confirm: 'Are you sure?'}, class:"btn btn-primary btn-xs"
