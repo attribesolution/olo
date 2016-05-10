@@ -44,6 +44,13 @@ Rails.application.routes.draw do
           get :dirty
         end
       end
+
+      resources :menus, none: true do
+        collection do
+          get :by_restaurant_owner          
+        end
+      end
+
       resources :menus
         resources :devices do
         collection do
