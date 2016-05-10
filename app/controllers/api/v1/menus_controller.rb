@@ -1,5 +1,5 @@
 class Api::V1::MenusController < ApiController
-  # before_action :verify_category, only: [:index]
+  before_action :verify_category, only: [:index]
 
   def index
     @menus = Menu.by_category_id(params[:category_id]).is_active.order('created_at DESC')
