@@ -1,9 +1,9 @@
 class Api::V1::OrdersController < ApiController
   before_action :get_device_table_mapping, only: [:create]
-  before_action :get_table_no, only: [:create]
 
 	def create
-    @order = Order.create(table_no: @table_no, order_total: params[:order_total], restaurant_owner_id: @user.id, device_table_mapping_id: @device.first.id)
+    order_time = DateTime.strptime(params[:order_time].to_s,'%s')
+    @order = Order.create(table_no: params[:table_no], order_total: params[:order_total], order_time: order_time, table_cover: params[:table_cover], restaurant_owner_id: @user.id, device_table_mapping_id: @device.first.id)
     order_detail = params[:order_detail]
         
     order_detail.each do |detail|
@@ -19,13 +19,5 @@ class Api::V1::OrdersController < ApiController
       @device = DeviceTableMapping.where(device_id: device_id, restaurant_owner_id: @user.id)
 
       render :json => { message: "Invalid Device ID.", :status => 422 } unless @device.any?
-    end
-
-    def get_table_no
-      if params[:table_no] == 0
-        @table_no = @device.first.table_no
-      else
-        @table_no = params[:table_no]
-      end
     end
 end
