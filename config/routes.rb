@@ -59,6 +59,9 @@ Rails.application.routes.draw do
           post :updated
         end
       end
+
+      resources :questions, only: [:index]
+
       resources :orders
       resource :user do
         get :get_api_key, on: :member

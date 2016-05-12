@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -70,6 +71,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :restaurant_owner_id)
+      params.require(:question).permit(:question)
     end
 end
