@@ -1,0 +1,21 @@
+h1 Listing taxes
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @taxes.each do |tax|
+      tr
+        td = tax.name
+        td = link_to 'Show', tax
+        td = link_to 'Edit', edit_tax_path(tax)
+        td = link_to 'Destroy', tax, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Tax', new_tax_path

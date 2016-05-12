@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :taxes
   resources :menu_options
   resources :option_categories
   get 'menu_images/destroy'

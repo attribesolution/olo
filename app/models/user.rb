@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :menus, :class_name => "Menu", :foreign_key => "restaurant_owner_id"
   has_many :device_table_mappings, :class_name => "DeviceTableMapping", :foreign_key => "restaurant_owner_id"
   has_many :option_categories, :class_name => "OptionCategory", :foreign_key => "restaurant_owner_id"
+  
+  # has_many :taxations
+  # has_many :taxes, through: :taxations
 
   mount_uploader :logo, LogoUploader
   mount_uploader :background_image, BackgroundImageUploader
