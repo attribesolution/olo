@@ -1,0 +1,9 @@
+.hpanel
+	.panel-body
+		p
+		  strong Question:
+		  = @question.question
+
+		= link_to 'Edit', edit_question_path(@question), class: "btn btn-primary btn-xs"
+		'|
+		= link_to 'Back', questions_path, class: "btn btn-primary btn-xs"

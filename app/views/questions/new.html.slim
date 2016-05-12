@@ -1,0 +1,11 @@
+.hpanel
+  .panel-body    
+    h2.font-light.m-b-xs
+      | Add Question
+
+.hpanel     
+      .panel-body
+      	== render 'form'
+      	br
+		= link_to 'Back', questions_path, class: "btn btn-primary btn-xs"
+

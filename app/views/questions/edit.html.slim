@@ -1,0 +1,14 @@
+.hpanel
+	.panel-body
+		h1 Editing question
+
+.hpanel
+	.panel-body
+
+		== render 'form'
+		br
+
+		= link_to 'Show', @question, class: "btn btn-primary btn-xs"
+		'|
+		= link_to 'Back', questions_path, class: "btn btn-primary btn-xs"
+
