@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426091609) do
+ActiveRecord::Schema.define(version: 20160512052747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20160426091609) do
 
   add_index "menu_images", ["menu_id"], name: "index_menu_images_on_menu_id", using: :btree
 
+  create_table "menu_options", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.integer  "option_category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
@@ -69,6 +77,16 @@ ActiveRecord::Schema.define(version: 20160426091609) do
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
   add_index "menus", ["category_id"], name: "index_menus_on_category_id", using: :btree
 
+  create_table "option_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "restaurant_owner_id"
+    t.boolean  "multiple_choice"
+    t.boolean  "required"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "menu_id"
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "menu_id"
@@ -80,13 +98,15 @@ ActiveRecord::Schema.define(version: 20160426091609) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "table_no",                                   null: false
+    t.string   "table_no",                                   null: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.float    "order_total",             default: 0.0,      null: false
     t.string   "status_cd",               default: "placed", null: false
     t.integer  "restaurant_owner_id"
     t.integer  "device_table_mapping_id"
+    t.integer  "table_cover"
+    t.datetime "order_time"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -99,6 +119,24 @@ ActiveRecord::Schema.define(version: 20160426091609) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "taxations", force: :cascade do |t|
+    t.integer "restaurant_owner_id"
+    t.integer "tax_id"
+    t.float   "percentage"
+  end
+
+  create_table "taxes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxes_users", force: :cascade do |t|
+    t.integer "restaurant_owner_id"
+    t.integer "tax_id"
+    t.float   "percentage"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

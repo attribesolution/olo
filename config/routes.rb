@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :taxes
+  resources :menu_options
+  resources :option_categories
   get 'menu_images/destroy'
 
   resources :device_table_mappings
@@ -42,6 +45,13 @@ Rails.application.routes.draw do
           get :dirty
         end
       end
+
+      resources :menus, none: true do
+        collection do
+          get :by_restaurant_owner          
+        end
+      end
+
       resources :menus
         resources :devices do
         collection do

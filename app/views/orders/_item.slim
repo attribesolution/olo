@@ -43,8 +43,10 @@
                   = link_to arr[1].humanize, update_status_orders_path(id: order.id, status: arr[1]), remote: true, method: 'post'
 
         .project-value
-          h2.text-success
-            | Table No. #{order.table_no.to_s}
+          h3.text-success
+            | Table # #{order.table_no.to_s}
+            br
+            | Cover : #{order.table_cover.to_s}
 
         
   .panel-footer

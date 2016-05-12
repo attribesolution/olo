@@ -1,0 +1,18 @@
+- @option_categories.each do |option_category|
+  tr
+    td = option_category.name
+    td = option_category.multiple_choice
+    td = option_category.required
+    td
+      = link_to option_category, class: "btn btn-primary btn-xs" do
+        i.fa.fa-eye
+        |  Show
+      ||
+      = link_to edit_option_category_path(option_category), class: "btn btn-primary btn-xs" do
+        i.fa.fa-edit
+        |  Edit
+      ||
+      = link_to option_category, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs" do
+        i.fa.fa-remove
+        |  Remove
+      |

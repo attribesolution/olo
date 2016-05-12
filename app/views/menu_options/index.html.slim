@@ -1,0 +1,35 @@
+h1 Menu Options
+
+table.table
+  thead
+    tr
+      th Name
+      th Price
+      th Option category
+      th
+      th
+      th
+
+  tbody
+    - @menu_options.each do |menu_option|
+      tr
+        td = menu_option.name
+        td = menu_option.price
+        td = menu_option.option_category_id
+        td
+          = link_to menu_option, class: "btn btn-primary btn-xs" do
+            i.fa.fa-eye
+            |  Show
+          ||
+          = link_to edit_menu_option_path(menu_option), class: "btn btn-primary btn-xs" do
+            i.fa.fa-edit
+            |  Edit
+          ||
+          = link_to menu_option, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs" do
+            i.fa.fa-remove
+            |  Remove
+          |
+
+br
+
+= link_to 'New Menu option', new_menu_option_path, class:"btn btn-primary btn-xs"

@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @tax.name
+
+= link_to 'Edit', edit_tax_path(@tax)
+'|
+= link_to 'Back', taxes_path

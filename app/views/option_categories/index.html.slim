@@ -1,0 +1,16 @@
+h1 Option Categories
+
+table.table
+  thead
+    tr
+      th Name
+      th Multiple choice
+      th Required
+      th
+      th
+      th
+
+  tbody
+    == render 'index.html.slim'
+br
+= link_to 'New Option category', new_option_category_path, class:"btn btn-primary btn-xs"

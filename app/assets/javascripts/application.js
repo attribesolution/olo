@@ -15,6 +15,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap-sprockets
+//= require cocoon
 //= require slimScroll/jquery.slimscroll.min.js
 //= require jquery-flot/jquery.flot.js
 //= require jquery-flot/jquery.flot.resize.js

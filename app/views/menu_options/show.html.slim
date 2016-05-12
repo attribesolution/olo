@@ -1,0 +1,13 @@
+p
+  strong Name:
+  = @menu_option.name
+p
+  strong Price:
+  = @menu_option.price
+p
+  strong Option category:
+  = @menu_option.option_category.name
+
+= link_to 'Edit', edit_menu_option_path(@menu_option), class:"btn btn-primary btn-xs"
+'|
+= link_to 'Back', menu_options_path, class:"btn btn-primary btn-xs"

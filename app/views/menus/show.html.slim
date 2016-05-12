@@ -1,26 +1,66 @@
-p#notice = notice
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        
+    h2.font-light.m-b-xs
+      p
+        center
+          strong = @menu.name
+.hpanel     
+  .panel-body     
+    p 
+      strong Price: 
+      = @menu.price
+    p
+      strong Serving:   
+      = @menu.serving
+    p
+      strong Description: 
+      = @menu.description
+    p
+      strong Category: 
+      = @menu.category.name
+      
+      - if @menu.menu_images.any?
+        - @menu.menu_images.each do |mp|
+          = image_tag mp.image
+          = link_to "Remove", menu_menu_image_path(@menu, mp), :method => :delete, :confirm => "Are you sure?"
+    br
+    br
+    h3 
+      strong Option categories
+    br
 
-p
-  strong Name:
-  = @menu.name
-p
-  strong Price:
-  = @menu.price
-p
-  strong Serving:
-  = @menu.serving
-p
-  strong Description:
-  = @menu.description
-p
-  strong Category:
-  = @menu.category.name
-  
-  - if @menu.menu_images.any?
-    - @menu.menu_images.each do |mp|
-      = image_tag mp.image
-      = link_to "Remove", menu_menu_image_path(@menu, mp), :method => :delete, :confirm => "Are you sure?"
+    table.table
+      thead
+        tr
+          th Name
+          th Multiple choice
+          th Required
+          th
+          th
+          th
 
-= link_to 'Edit', edit_menu_path(@menu)
-'|
-= link_to 'Back', menus_path(:q => {:category_name_cont => @menu.category.name})
+      tbody
+        - @menu.option_categories.each do |option_category|
+          tr
+            td = option_category.name
+            td = option_category.multiple_choice
+            td = option_category.required
+            td 
+              = link_to option_category, class: "btn btn-primary btn-xs" do
+                i.fa.fa-eye
+                |  Show
+              ||
+              = link_to option_category, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs" do
+                i.fa.fa-remove
+                |  Remove
+              |
+    br
+    = link_to 'Add Options Category', new_option_category_path(menu_id: params[:id]), class: "btn btn-primary btn-xs"
+    br
+    br
+    = link_to 'Edit', edit_menu_path(@menu), class: "btn btn-primary btn-xs"
+    ||
+    = link_to 'Back', menus_path(:q => {:category_name_cont => @menu.category.name}), class: "btn btn-primary btn-xs"

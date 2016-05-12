@@ -1,0 +1,16 @@
+= simple_form_for(@option_category) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :menu, collection: current_user.menus, label: false, prompt: "Select a menu", :selected => params[:menu_id]
+    = f.input :name
+    = f.input :multiple_choice
+    = f.input :required
+  = f.simple_fields_for :menu_options do |menu_option|
+    = render 'menu_option_fields', f: menu_option
+  .links
+    = link_to_add_association 'add menu options', f, :menu_options, class:"btn btn-primary btn-xs"
+  br
+  .form-actions
+    = f.button :submit
+  br

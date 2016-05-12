@@ -1,0 +1,43 @@
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        
+    h2.font-light.m-b-xs
+      p
+        center
+          strong = @option_category.name
+
+.hpanel
+  .panel-body
+    p
+      strong Multiple choice:
+      = @option_category.multiple_choice
+    p
+      strong Required:
+      = @option_category.required
+    br
+    br
+    h3
+      strong Menu options
+
+    table.table
+      thead
+        tr
+          th Name
+          th Price
+          th 
+          th
+
+      tbody
+        - @option_category.menu_options.each do |menu_option|
+          tr
+            td = menu_option.name
+            td = menu_option.price
+
+    = link_to 'New menu option', new_menu_option_path(option_category_id: params[:id]), class:"btn btn-primary btn-xs"
+    br
+    br
+    = link_to 'Edit', edit_option_category_path(@option_category), class:"btn btn-primary btn-xs"
+    '|
+    = link_to 'Back', option_categories_path, class:"btn btn-primary btn-xs"
