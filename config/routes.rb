@@ -62,6 +62,8 @@ Rails.application.routes.draw do
 
       resources :questions, only: [:index]
 
+      resources :answers, only: [:create]
+
       resources :orders
       resource :user do
         get :get_api_key, on: :member
