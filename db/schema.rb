@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20160513082137) do
     t.integer  "survey_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "phone_no"
-    t.integer  "order_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,10 +32,6 @@ ActiveRecord::Schema.define(version: 20160513082137) do
     t.string   "image",               default: "",    null: false
     t.boolean  "dirty",               default: false, null: false
     t.integer  "parent_id"
-    t.integer  "lft",                 default: 0,     null: false
-    t.integer  "rgt",                 default: 0,     null: false
-    t.integer  "depth",               default: 0,     null: false
-    t.integer  "children_count",      default: 0,     null: false
   end
 
   create_table "device_table_mappings", force: :cascade do |t|
