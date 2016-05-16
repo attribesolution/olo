@@ -10,6 +10,6 @@ class Menu < ActiveRecord::Base
   scope :is_active, -> {where(approved: true)}
   scope :is_dirty, -> {where(dirty: true)}
 
-  validates_presence_of :name, :price, :category, :serving
+  validates_presence_of :name, :price, :category
   validates :price, :numericality => { :greater_than => 0 }
 end
