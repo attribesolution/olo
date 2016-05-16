@@ -15,7 +15,5 @@ $ ->
         required: true
       "menu[price]":
         required: true
-      "menu[serving]":
-        required: true
       "menu[category_id]":
         required: true
