@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160512052747) do
     t.integer  "option_category_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -130,12 +131,6 @@ ActiveRecord::Schema.define(version: 20160512052747) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "taxes_users", force: :cascade do |t|
-    t.integer "restaurant_owner_id"
-    t.integer "tax_id"
-    t.float   "percentage"
   end
 
   create_table "users", force: :cascade do |t|
