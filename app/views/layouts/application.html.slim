@@ -3,9 +3,9 @@ html
   head
     meta charset="utf-8"
     meta content="width=device-width, initial-scale=1.0" name="viewport"
-    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Restaurant Menus'}"
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Olo'}"
     title
-      = content_for?(:title) ? yield(:title) : 'Restaurant Menus'
+      = content_for?(:title) ? yield(:title) : 'Olo'
     = favicon_link_tag 'favicon.ico'
     /! Include style per-controller - vendor plugins
     = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")

@@ -16,7 +16,7 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: restaurant_menus_development
+  database: olo_development
   pool:     5
   username: postgres
   password: root
@@ -44,7 +44,7 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: restaurant_menus_test
+  database: olo_test
   pool:     5
   username: postgres
   password: root
@@ -54,7 +54,7 @@ production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: restaurant_menus_production
+  database: olo_production
   pool:     5
   username: postgres
   password: root
