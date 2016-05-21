@@ -2,7 +2,11 @@ class Api::V1::MenusController < ApiController
   before_action :verify_category, only: [:index]
 
   def index
-    @menus = Menu.by_category_id(params[:category_id]).is_active.order('created_at DESC')
+    if params[:category_id]
+      @menus = Menu.by_category_id(params[:category_id]).is_active.order('created_at DESC')
+    else
+      @menus = Menu.is_active.order('created_at DESC')
+    end
     @base_url = request.protocol + request.host_with_port
   end
 
@@ -17,8 +21,12 @@ class Api::V1::MenusController < ApiController
 
   private
     def verify_category
-      unless @user.categories.map{|c| c.id}.include? params[:category_id].to_i
-        render :json => { :status => 401, message: "Invalid category id." }
+      if params[:category_id]
+        unless @user.categories.map{|c| c.id}.include? params[:category_id].to_i
+          render :json => { :status => 401, message: "Invalid category id." }
+        end
+      else
+        return
       end
     end
 end
