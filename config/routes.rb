@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :reservations, only: [:index]
+
   namespace :api do
   	namespace :v1 do
       resources :categories do
@@ -53,7 +55,7 @@ Rails.application.routes.draw do
       end
 
       resources :menus
-        resources :devices do
+      resources :devices do
         collection do
           post :updated
         end
@@ -62,6 +64,7 @@ Rails.application.routes.draw do
       resource :user do
         get :get_api_key, on: :member
       end
+      resources  :reservations, only: [:create]
   	end
   end
 
