@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  getNewReservations = ->
+    $.ajax(
+      type: 'GET'
+      url: '/reservations'
+      data: {"lastReservationId" : gon.lastReservationId}
+      dataType: 'script').success (json) ->
+      return
+      false
+      
+  if gon.autoFetchNewReservations && gon.autoFetchNewReservations == true
+    setInterval (->
+      getNewReservations()
+      return
+    ), 5000

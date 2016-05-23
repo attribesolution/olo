@@ -1,0 +1,10 @@
+.hpanel
+  .panel-body
+    h2.font-light.m-b-xs
+      | Reservations
+    small Listing Reservations
+
+- if @reservations.any?  
+  .row.projects
+    - @reservations.each do |reservation|
+      = render "reservations/item", reservation: reservation

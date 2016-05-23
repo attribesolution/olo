@@ -1,0 +1,6 @@
+<% if @reservations.any? %>
+  gon.lastReservationId = <%= @reservations.first.id %>;
+  <% @reservations.reverse.each do |reservation| %>
+      $('div.projects').prepend("<%= escape_javascript(render :partial => 'reservations/item', :locals => { :reservation => reservation }) %>");
+  <% end %>
+<% end %>

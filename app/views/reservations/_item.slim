@@ -1,0 +1,25 @@
+.col-lg-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.1s;") 
+  .hpanel.hgreen
+    .panel-body
+      .row
+        .col-sm-8.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+          
+          .row
+            .col-sm-5.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+              .project-label Date & Time
+
+            .col-sm-4.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+              .project-label No of Person
+
+            .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+              .project-label Phone
+
+          .row
+            .col-sm-5.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+              = reservation.time.strftime("%b %d, %Y - %H:%M")
+
+            .col-sm-4.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+              = reservation.no_of_person
+
+            .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+              = reservation.phone
