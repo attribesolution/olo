@@ -1,7 +1,7 @@
 .hpanel
   .panel-body    
     h2.font-light.m-b-xs
-      | Upload Images
+      | Settings
     
 
 .row
@@ -26,3 +26,8 @@
           br
           .form-actions
             = f.submit "Upload", class: "btn btn-primary"
+        br
+        = form_tag sync_settings_path() do
+          = label_tag :passcode, "Your DMenu Passcode"
+          = text_field_tag :passcode, nil, required: true
+          = submit_tag 'Sync'

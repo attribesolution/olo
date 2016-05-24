@@ -28,4 +28,16 @@ class SettingsController < ApplicationController
     redirect_to root_path
   end
 
+  def sync
+    begin
+      response = HTTParty.get(Rails.application.secrets.dmenu_domain_address + '/api/v1/user/get_api_key?passcode=' + params[:passcode])
+      if response["api_key"].present?
+        sync_response = HTTParty.get(Rails.application.secrets.dmenu_domain_address + '/api/v1/categories/sync', headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json', 'Authorization' => response["api_key"] })
+      end
+    rescue Exception => e
+      flash[:alert] = e.message
+    end
+    redirect_to root_path
+  end
+
 end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :settings do
     collection do
       post :upload_images
+      post :sync
     end
   end
 
