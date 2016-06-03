@@ -12,31 +12,20 @@
       | Categories
     small Listing Categories
 
-
-.row
-  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-    .hpanel     
-      .panel-body.cat_list
-        /
-          table.table cellpadding="1" cellspacing="1"
-            thead
-              tr
-                th
-                th Category Name
-                th Dirty
-                th Actions
-              
-              
-
-              = form_tag destroy_multiple_categories_path, method: :delete do 
-                = submit_tag "Delete Selected", class: "btn btn-primary btn-xs"
-                - @categories.each do |category|
-                  = render partial: "category_item", locals: { category: category }
-        
-        hr
-        table 
-          = options_for_select(nested_set_options(Category) {|i| render partial: "child_category_item", locals: {item: i} } )
-
-.comments
-  = nested_li(Category.all) do |category|
-    = category.name
+.hpanel     
+  .panel-body
+    table.table
+      thead
+        tr
+          th Category Name
+          th Dirty
+          th Actions
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.name
+            td = category.dirty ? "Yes" : "No"
+            td 
+              = link_to menus_path(:q => {:name_or_description_or_category_name_cont => category.name}), class: "btn btn-primary btn-xs" do
+                i.fa.fa-eye
+                |  Show

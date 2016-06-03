@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'menu_images/destroy'
+  # get 'menu_images/destroy'
 
   resources :device_table_mappings
   resources :menus, :only => [:index, :show]

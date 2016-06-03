@@ -24,10 +24,6 @@ ActiveRecord::Schema.define(version: 20160603084328) do
     t.string   "image",               default: "",    null: false
     t.boolean  "dirty",               default: false, null: false
     t.integer  "parent_id"
-    t.integer  "lft",                 default: 0,     null: false
-    t.integer  "rgt",                 default: 0,     null: false
-    t.integer  "depth",               default: 0,     null: false
-    t.integer  "children_count",      default: 0,     null: false
   end
 
   create_table "device_table_mappings", force: :cascade do |t|

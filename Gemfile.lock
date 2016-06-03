@@ -50,8 +50,6 @@ GEM
     autoprefixer-rails (5.1.11)
       execjs
       json
-    awesome_nested_set (3.0.3)
-      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -309,7 +307,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_nested_set
   bootstrap-sass
   byebug
   capybara

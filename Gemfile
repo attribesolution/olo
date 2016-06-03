@@ -17,7 +17,6 @@ gem 'font-awesome-rails'
 gem 'ransack'
 gem 'kaminari'
 gem 'gon'
-gem 'awesome_nested_set'
 gem 'httparty'
 
 group :development, :test do
