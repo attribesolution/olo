@@ -1,9 +1,9 @@
 .hpanel
   .panel-body      
-    #hbreadcrumb.pull-right.m-t-lg
-      ol.hbreadcrumb.breadcrumb
-        li          
-          = link_to 'Add', new_menu_path, class: "btn btn-primary btn-xs glyphicon glyphicon-plus"
+    / #hbreadcrumb.pull-right.m-t-lg
+    /   ol.hbreadcrumb.breadcrumb
+    /     li          
+    /       = link_to 'Add', new_menu_path, class: "btn btn-primary btn-xs glyphicon glyphicon-plus"
         
 
     h2.font-light.m-b-xs
@@ -36,8 +36,8 @@
               th
 
           tbody
-            = form_tag destroy_multiple_menus_path, method: :delete do
-              br
-              = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
-              == render 'index.html.slim'
+            / = form_tag destroy_multiple_menus_path, method: :delete do
+            /   br
+            /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
+            == render 'index.html.slim'
         = paginate @menus

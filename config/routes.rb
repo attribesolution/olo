@@ -1,23 +1,10 @@
 Rails.application.routes.draw do
-  resources :taxes
-  resources :menu_options
-  resources :option_categories
   get 'menu_images/destroy'
 
   resources :device_table_mappings
-  resources :menus do
-    resources :menu_images, :only => [:destroy]
-    collection do
-      delete 'destroy_multiple'
-      post :approve_disapprove_menus  
-    end
-  end
+  resources :menus, :only => [:index, :show]
 
-  resources :categories do
-    collection do
-      delete 'destroy_multiple'
-    end
-  end
+  resources :categories, :only => [:index, :show]
   
   root to: 'orders#index'
   # devise_for :users
