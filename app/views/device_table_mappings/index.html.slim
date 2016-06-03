@@ -20,21 +20,11 @@
             tr
               th Device Name
               th Device ID
-              th Table Number
               th Updated
-              th Actions
 
           tbody
             - @device_table_mappings.each do |device_table_mapping|
               tr
                 td = device_table_mapping.device_name
                 td = device_table_mapping.device_id
-                td = device_table_mapping.table_no
                 td = device_table_mapping.updated ? "True" : "False"
-                td
-                  /= link_to 'Show', device_table_mapping, class: "btn btn-primary btn-xs glyphicon glyphicon-folder-open"
-                    
-                  = link_to 'Edit', edit_device_table_mapping_path(device_table_mapping), class: "btn btn-primary btn-xs glyphicon glyphicon-edit"
-                  |  
-                  = link_to 'Destroy', device_table_mapping, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs glyphicon glyphicon-trash"
-

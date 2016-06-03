@@ -1,6 +1,5 @@
 - @menus.each do |menu|
 	tr
-	  td = check_box_tag "menus_ids[]", menu.id
 	  td = menu.name
 	  td = menu.dirty ? "Yes" : "No"
 	  td = menu.price
