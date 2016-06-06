@@ -25,7 +25,6 @@
       - if @menu.menu_images.any?
         - @menu.menu_images.each do |mp|
           = image_tag mp.image
-          = link_to "Remove", menu_menu_image_path(@menu, mp), :method => :delete, :confirm => "Are you sure?"
     br
     br
     h3 
