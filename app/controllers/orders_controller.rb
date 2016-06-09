@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
 			@order.save
 		end
 
+    log=OrderLog.new(:status=>params[:status],:order_id=> @order.id,:restaurant_owner_id=> @order.restaurant_owner_id)
+    log.save
+
 		respond_to :js
 	end
 end
