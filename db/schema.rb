@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603084328) do
+ActiveRecord::Schema.define(version: 20160609092251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",                default: "",    null: false
+    t.string   "name"
     t.integer  "restaurant_owner_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "image",               default: "",    null: false
+    t.string   "image"
     t.boolean  "dirty",               default: false, null: false
     t.integer  "parent_id"
+    t.integer  "lft",                 default: 0,     null: false
+    t.integer  "rgt",                 default: 0,     null: false
+    t.integer  "depth",               default: 0,     null: false
+    t.integer  "children_count",      default: 0,     null: false
   end
 
   create_table "device_table_mappings", force: :cascade do |t|
