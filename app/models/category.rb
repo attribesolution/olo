@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
   belongs_to :restaurant_owner, :class_name => "User", :foreign_key => "restaurant_owner_id"
   has_many :menus, dependent: :destroy
 
-  mount_uploader :image, CategoryImageUploader
+  # mount_uploader :image, CategoryImageUploader
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
   scope :parent_only, -> { where( parent_id: nil) }
