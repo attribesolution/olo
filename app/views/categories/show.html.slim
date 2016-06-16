@@ -1,11 +1,21 @@
-p#notice = notice
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        
+    h2.font-light.m-b-xs
+      p
+        center
+          strong = @category.name
 
 p
   strong Name:
   = @category.name
 
+br
+
   = image_tag @category.image if @category.image?
 
-= link_to 'Edit', edit_category_path(@category)
-'|
-= link_to 'Back', categories_path
+= link_to categories_path, class: "btn btn-primary btn-xs" do
+  i.fa.fa-arrow-left
+  |  Back
