@@ -30,15 +30,21 @@ class OrdersController < ApplicationController
 	def update_status
 		@order = Order.where(id: params[:id])
 
-		if @order.any?
-			@order = @order.first
-			@order.status = params[:status]
-			@order.save
-		end
+    begin
+  		if @order.any?
+  			@order = @order.first
+  			@order.status = params[:status]
+  			@order.save
+  		end
 
-    log=OrderLog.new(:status=>params[:status],:order_id=> @order.id,:restaurant_owner_id=> @order.restaurant_owner_id)
-    log.save
+      log = OrderLog.create(status: params[:status],order_id: @order.id,restaurant_owner_id: @order.restaurant_owner_id)    
+      log.save
 
-		respond_to :js
+      respond_to :js
+    rescue 
+      flash[:fail] = "Status cannot be updated"
+      render 'index'
+      
+    end
 	end
 end
