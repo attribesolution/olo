@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :device_table_mappings, :class_name => "DeviceTableMapping", :foreign_key => "restaurant_owner_id"
   has_many :option_categories, :class_name => "OptionCategory", :foreign_key => "restaurant_owner_id"
   has_many :reservations, :class_name => "Reservation", :foreign_key => "restaurant_owner_id"
+  has_many :orders, :class_name => "Order", :foreign_key => "restaurant_owner_id"
   # has_many :taxations
   # has_many :taxes, through: :taxations
 

@@ -7,7 +7,6 @@ class Api::V1::MenusController < ApiController
     else
       @menus = Menu.is_active.order('created_at DESC')
     end
-    @base_url = request.protocol + request.host_with_port
   end
 
   def show
@@ -16,7 +15,6 @@ class Api::V1::MenusController < ApiController
 
   def by_restaurant_owner
     @menus = Menu.by_restaurant_owner(@user.id).is_active.order('created_at DESC')
-    @base_url = request.protocol + request.host_with_port
   end
 
   private

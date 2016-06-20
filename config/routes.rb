@@ -53,6 +53,7 @@ Rails.application.routes.draw do
         get :get_api_key, on: :member
       end
       resources  :reservations, only: [:create]
+      resources :order_logs, only: [:index]
   	end
   end
 
