@@ -15,19 +15,21 @@ ActiveRecord::Schema.define(version: 20160610110805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "restaurant_owner_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "image"
-    t.boolean  "dirty",               default: false, null: false
+    t.boolean  "dirty",               default: false,                null: false
     t.integer  "parent_id"
-    t.integer  "lft",                 default: 0,     null: false
-    t.integer  "rgt",                 default: 0,     null: false
-    t.integer  "depth",               default: 0,     null: false
-    t.integer  "children_count",      default: 0,     null: false
+    t.integer  "lft",                 default: 0,                    null: false
+    t.integer  "rgt",                 default: 0,                    null: false
+    t.integer  "depth",               default: 0,                    null: false
+    t.integer  "children_count",      default: 0,                    null: false
+    t.uuid     "uuid",                default: "uuid_generate_v4()"
   end
 
   create_table "device_table_mappings", force: :cascade do |t|
@@ -67,12 +69,13 @@ ActiveRecord::Schema.define(version: 20160610110805) do
     t.text     "description"
     t.integer  "restaurant_owner_id"
     t.integer  "category_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.boolean  "approved",            default: true,  null: false
-    t.boolean  "dirty",               default: false, null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.boolean  "approved",            default: true,                 null: false
+    t.boolean  "dirty",               default: false,                null: false
     t.float    "original_price"
     t.string   "serving"
+    t.uuid     "uuid",                default: "uuid_generate_v4()"
   end
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
