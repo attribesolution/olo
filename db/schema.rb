@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621105226) do
+ActiveRecord::Schema.define(version: 20160621113017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160621105226) do
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.string   "deviceos"
+    t.string   "device_os"
   end
 
   create_table "reservations", force: :cascade do |t|
