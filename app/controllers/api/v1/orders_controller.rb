@@ -3,7 +3,7 @@ class Api::V1::OrdersController < ApiController
 
 	def create
     order_time = DateTime.strptime(params[:order_time].to_s,'%s')
-    @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], order_total: params[:order_total], order_time: order_time, restaurant_owner_id: @user.id)
+    @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], order_total: params[:order_total], order_time: order_time, restaurant_owner_id: @user.id, deviceos: params[:deviceos])
     order_detail = params[:order_detail]
         
     order_detail.each do |detail|
