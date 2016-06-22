@@ -30,7 +30,12 @@
               = detail.quantity * detail.item_price
         br
           b Total: 
-          | PKR #{order.order_total}      
+          | PKR #{order.order_total}
+          | &nbsp;
+          | &nbsp;
+          b Platform:
+          | #{order.device_os}
+
         
       .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
         .project-action.m-t-md                    
