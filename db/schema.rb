@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160621113017) do
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.string   "device_os"
+    t.integer  "device_os"
   end
 
   create_table "reservations", force: :cascade do |t|
