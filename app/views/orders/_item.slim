@@ -28,13 +28,7 @@
 
             .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
               = detail.quantity * detail.item_price
-        br
-          b Total: 
-          | PKR #{order.order_total}
-          | &nbsp;
-          | &nbsp;
-          b Platform:
-          | #{order.device_os}
+    
 
         
       .col-sm-4.project-info.animated-panel.zoomIn style=("-webkit-animation-delay: 0.5s;") 
@@ -48,7 +42,14 @@
               - Order.statuses.hash.each do |arr|
                 li
                   = link_to arr[1].humanize, update_status_orders_path(id: order.id, status: arr[1]), remote: true, method: 'post'
-
+    br              
+    .row
+      .col-sm-5    
+        b Total: 
+        | PKR #{order.order_total}
+      .col-sm-4
+        b Platform:
+        | #{order.device_os}  
         
   .panel-footer
     .row
