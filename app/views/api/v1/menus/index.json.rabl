@@ -1,5 +1,5 @@
 collection @menus, :object_root => false
-attributes :id, :name, :price, :description, :category_id, :created_at, :updated_at
+attributes :id, :name, :price, :description, :category_id, :created_at, :updated_at, :uuid
 
 child :menu_images, :root => "images", :object_root => false do
   attributes :id, :created_at, :updated_at
