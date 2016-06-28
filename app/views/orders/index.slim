@@ -2,9 +2,14 @@
   .panel-body
     h2.font-light.m-b-xs 
       | Orders
-    small Listing Orders
+    = form_tag(orders_path, :method => "get", id: "search-form") do
+    	= text_field_tag :search, params[:search], placeholder: "Enter Phone Number"
+    	= submit_tag "Search", :name => nil
 
 - if @orders.any?  
   .row.projects
     - @orders.each do |order|
       = render "orders/item", order: order, fullScreen: false
+- else
+		b
+			p There are no order against the phone number: #{params[:search]}

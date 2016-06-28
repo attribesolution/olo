@@ -4,8 +4,13 @@ class OrdersController < ApplicationController
 	layout 'empty', only: [:full_screen]
 
 	def index
-    @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
-    @orders = @orders.where(created_at: 12.hours.ago..Time.now)
+    
+    if params[:search]
+      @orders=Order.by_restaurant(current_user.id).search(params[:search]).order(created_at: :desc)
+    else
+      @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
+      @orders = @orders.where(created_at: 12.hours.ago..Time.now)
+    end
     gon.lastOrderId = @orders.first.id if @orders.any?
     gon.autoFetchNewOrders = true
 	end

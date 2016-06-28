@@ -7,4 +7,7 @@ class Order < ActiveRecord::Base
 
   scope :by_restaurant, lambda { |id| where(restaurant_owner_id: id) }
   scope :from_order, lambda { |id| where("id > ?", id) }
+  def self.search(query)
+  	where("phone like ?", "#{query}") 
+	end
 end
