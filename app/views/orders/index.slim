@@ -2,9 +2,9 @@
   .panel-body
     h2.font-light.m-b-xs 
       | Orders
-    = form_tag(orders_path, :method => "get", id: "search-form") do
-    	= text_field_tag :search, params[:search], placeholder: "Enter Phone Number"
-    	= submit_tag "Search", :name => nil
+    = form_tag(orders_path, :method => "get", id: "search-form", :class=>"form-inline") do
+    	= text_field_tag :search, params[:search], :class => 'form-control', placeholder: "Enter Phone Number"
+    	= submit_tag "Search", :name => nil, :class => 'btn btn-primary'	
 
 - if @orders.any?  
   .row.projects
