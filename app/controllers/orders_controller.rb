@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
 	def index
     @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
+    @orders = @orders.where(created_at: 12.hours.ago..Time.now)
     gon.lastOrderId = @orders.first.id if @orders.any?
     gon.autoFetchNewOrders = true
 	end
