@@ -2,18 +2,15 @@ class Api::V1::CategoriesController < ApiController
   before_filter :check_required_params, :check_device, only: [:dirty]
   def index
     @categories = @user.categories.order('created_at DESC')
-    @base_url = request.protocol + request.host_with_port
   end
 
   def sync
     @categories = @user.categories.order('created_at DESC')
-    @base_url = request.protocol + request.host_with_port
   end
 
   def dirty
     if @device.first.updated == false
       @categories = @user.categories.order('created_at DESC')
-      @base_url = request.protocol + request.host_with_port
     else
       return render :json => { message: "Device is already updated.", :status => 200 }
     end

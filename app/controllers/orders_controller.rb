@@ -33,8 +33,14 @@ class OrdersController < ApplicationController
 		if @order.any?
 			@order = @order.first
 			@order.status = params[:status]
-			@order.save
-		end
+      
+      if @order.save
+        # create an Order Log each time order status changes
+        order_log = @order.order_logs.build(status: params[:status])
+        order_log.save
+      end
+    end
+
 
 		respond_to :js
 	end

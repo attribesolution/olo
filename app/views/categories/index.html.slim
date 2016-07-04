@@ -23,9 +23,9 @@
       tbody
         - @categories.each do |category|
           tr
-            td = category.name
+            td = link_to category.name, category
             td = category.dirty ? "Yes" : "No"
             td 
               = link_to menus_path(:q => {:name_or_description_or_category_name_cont => category.name}), class: "btn btn-primary btn-xs" do
                 i.fa.fa-eye
-                |  Show
+                |  Show Menus
