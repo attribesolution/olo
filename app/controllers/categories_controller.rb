@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.by_restaurant_owner(current_user.id).parent_only().order(created_at: :desc)
+    @categories = Category.by_restaurant_owner(current_user.id).parent_only.order(created_at: :desc)
   end
 
   # GET /categories/1

@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   mount_uploader :image, CategoryImageUploader
 
   scope :by_restaurant_owner, lambda{|id| where(restaurant_owner_id: id)}
-  scope :parent_only, -> { where( parent_id: nil) }
+  scope :parent_only, -> { where( parent_id: 0) }
   scope :category_dirty, -> {where(dirty: true)}
 
   validates_presence_of :name
