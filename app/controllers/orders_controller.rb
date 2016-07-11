@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
 	def update_status
 		@order = Order.where(id: params[:id])
 
+
 		if @order.any?
 			@order = @order.first
 			@order.status = params[:status]
