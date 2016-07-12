@@ -10,6 +10,14 @@ class Category < ActiveRecord::Base
 
   validates_presence_of :name
 
+  before_validation :set_parent_id, on: [:create, :update]
+
+  def set_parent_id
+    if self.parent_id==nil
+      self.parent_id=0
+    end
+  end
+
   def active_menus
 	  self.menus.is_active
   end
