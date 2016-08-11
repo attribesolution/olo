@@ -1,21 +1,27 @@
-- @menus.each do |menu|
-	tr
-	  td = menu.name
-	  td = menu.dirty ? "Yes" : "No"
-	  td = menu.price
-	  td = menu.description
-	  td = menu.category.name
-	  td = link_to menu.approved ? "Yes" : "No"
-	  td
-	    = link_to menu, class: "btn btn-primary btn-xs" do
-	      i.fa.fa-eye
-	      |  Show
-	    / ||
-	    / = link_to edit_menu_path(menu), class: "btn btn-primary btn-xs" do
-	    /   i.fa.fa-edit
-	    /   |  Edit
-	    / ||
-	    / = link_to menu, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-primary btn-xs" do
-	    /   i.fa.fa-remove
-	    /   |  Remove
-	    / |
+#nestable2.dd
+		ol.dd-list
+			- @menus.each do |menu|
+				li.dd-item.font-extra-bold data-id=menu.id 
+				  .dd-handle
+				    = menu.name
+				  ol.dd-list  
+				    li.dd-item.font-extra-bold 
+				      div
+				        = "Dirty : #{menu.dirty ? "Yes" : "No"}" 
+				    li.dd-item.font-extra-bold
+				      div
+				        = "Price : " + menu.price.to_s
+				    li.dd-item.font-extra-bold
+				      div
+				        = "Description : " + menu.description
+				    li.dd-item.font-extra-bold
+				      div
+				        = "Category : " + menu.category.name   
+				    li.dd-item.font-extra-bold
+				      div
+				        = "Approved : #{menu.approved ? "Yes" : "No"}"
+				    li.dd-item
+				      div
+				        = link_to menu, class: "btn btn-primary btn-xs" do
+	      					i.fa.fa-eye
+	      					|  Show
