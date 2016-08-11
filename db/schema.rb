@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20160811131014) do
     t.string   "code"
     t.string   "address"
     t.integer  "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "restaurant_owner_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "categories", force: :cascade do |t|

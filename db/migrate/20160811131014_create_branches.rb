@@ -5,7 +5,7 @@ class CreateBranches < ActiveRecord::Migration
       t.string :code
       t.string :address
       t.integer :phone
-
+      t.integer :restaurant_owner_id 
       t.timestamps null: false
     end
   end

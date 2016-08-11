@@ -25,6 +25,7 @@ class BranchesController < ApplicationController
   # POST /branches.json
   def create
     @branch = Branch.new(branch_params)
+    @branch.restaurant_owner = current_user
 
     respond_to do |format|
       if @branch.save
