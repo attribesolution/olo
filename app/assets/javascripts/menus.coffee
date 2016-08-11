@@ -18,6 +18,4 @@ $ ->
       "menu[category_id]":
         required: true
   # activate Nestable for list 1
-  $('#nestable2').nestable(group: 1).nestable('collapseAll').on 'change', updateOutput
-  # output initial serialised data
-  updateOutput $('#nestable2').data('output', $('#nestable2-output'))
+  $('#nestable2').nestable(group: 1).nestable('collapseAll')
