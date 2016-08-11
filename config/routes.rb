@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :branches
   # get 'menu_images/destroy'
 
   resources :device_table_mappings

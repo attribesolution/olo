@@ -17,3 +17,8 @@ Rails.application.config.assets.precompile += %w( taxes.css )
 Rails.application.config.assets.precompile += %w( taxes.js )
 Rails.application.config.assets.precompile += %w( reservations.css )
 Rails.application.config.assets.precompile += %w( reservations.js )
+Rails.application.config.assets.precompile += %w( branches.css )
+
+
+
+Rails.application.config.assets.precompile += %w( branches.js )
