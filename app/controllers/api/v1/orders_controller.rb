@@ -1,7 +1,11 @@
 class Api::V1::OrdersController < ApiController
   # before_action :get_device_table_mapping, only: [:create]
 
-	def create
+	def print
+    @orders = Order.where(is_printed: false)
+  end
+
+  def create
     order_time = DateTime.strptime(params[:order_time].to_s,'%s')
     @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], order_total: params[:order_total], order_time: order_time, restaurant_owner_id: @user.id, device_os: params[:device_os])
     order_detail = params[:order_detail]
