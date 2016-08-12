@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :branches
   # get 'menu_images/destroy'
 
   resources :device_table_mappings
@@ -33,6 +35,13 @@ Rails.application.routes.draw do
 
   namespace :api do
   	namespace :v1 do
+      resources :branches do
+        collection do
+          get :index
+        end
+
+      end
+
       resources :categories do
         collection do
           get :sync

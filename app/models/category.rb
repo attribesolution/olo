@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   def active_menus
-	  self.menus.is_active
+	  self.menus.is_active.order(sort_order: :asc)
   end
 
   def dirty_menus

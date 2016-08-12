@@ -1,0 +1,27 @@
+h1 Listing branches
+
+table
+  thead
+    tr
+      th Name
+      th Code
+      th Address
+      th Phone
+      th
+      th
+      th
+
+  tbody
+    - @branches.each do |branch|
+      tr
+        td = branch.name
+        td = branch.code
+        td = branch.address
+        td = branch.phone
+        td = link_to 'Show', branch
+        td = link_to 'Edit', edit_branch_path(branch)
+        td = link_to 'Destroy', branch, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Branch', new_branch_path
