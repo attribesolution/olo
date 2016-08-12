@@ -18,10 +18,10 @@
         = paginate @menus
         = search_form_for @q do |f|
           .form-inputs
-            = f.search_field :name_or_description, class: "form-control", placeholder: "Enter keywords and hit enter"
+            = f.search_field :name_or_description_or_category_name_cont, class: "form-control"
           br
           = f.submit "Search", class:"btn btn-primary btn-xs"
           br
           br
-          == render 'index.html.slim'
-        = paginate @menus
+        == render 'index.html.slim'
+      = paginate @menus

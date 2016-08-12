@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   # get 'menu_images/destroy'
 
   resources :device_table_mappings
-  resources :menus, :only => [:index, :show]
+  resources :menus, :only => [:index, :show] do
+    collection do
+      post :menu_sorting
+    end
+  end
 
   resources :categories, :only => [:index, :show]
   
