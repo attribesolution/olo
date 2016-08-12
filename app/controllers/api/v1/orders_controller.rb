@@ -4,7 +4,6 @@ class Api::V1::OrdersController < ApiController
 	def print
     @order = Order.where(is_printed: false).first
     @order.update_attribute(:is_printed, true)
-    binding.pry
 
   end
 
