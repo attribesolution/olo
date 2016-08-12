@@ -2,12 +2,10 @@ class Api::V1::OrdersController < ApiController
   # before_action :get_device_table_mapping, only: [:create]
 
 	def print
-    @printable_orders = @orders = Order.where(is_printed: false).limit(5)
-    
-    # @orders.update_all(is_printed: true)
-    
+    @order = Order.where(is_printed: false).first
+    @order.update_attribute(:is_printed, true)
+    binding.pry
 
-    render json: { orders: @printable_orders }
   end
 
   def create
