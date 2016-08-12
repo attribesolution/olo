@@ -18,11 +18,16 @@ class MenusController < ApplicationController
     sorted_ids = params[:sorted_ids]
     sorted_ids.each_with_index do |sorted_id, index|
       menu = Menu.find_by_id(sorted_id)
-      menu.sort_order = index + 1
-      menu.save
+      if menu.nil?
+        error = {:status => 404, :message => "Menu not found"}
+        render :json => error
+      else
+        menu.sort_order = index + 1
+        menu.save
+      end
+      msg = { :status => 200, :message => "Success!" }
+      render :json => msg
     end
-    msg = { :status => 200, :message => "Success!" }
-    render :json => msg
   end
   
   private

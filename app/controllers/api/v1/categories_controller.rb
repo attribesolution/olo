@@ -5,7 +5,7 @@ class Api::V1::CategoriesController < ApiController
   end
 
   def sync
-    @categories = @user.categories.order('sort_order ASC')
+    @categories = @user.categories.order('created_at DESC')
   end
 
   def dirty

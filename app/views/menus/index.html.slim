@@ -14,14 +14,17 @@
 .row
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
     .hpanel     
-      .panel-body        
-        = paginate @menus
+      .panel-body
         = search_form_for @q do |f|
           .form-inputs
-            = f.search_field :name_or_description_or_category_name_cont, class: "form-control"
+            = f.search_field :name_or_description, class: "form-control"
           br
           = f.submit "Search", class:"btn btn-primary btn-xs"
           br
           br
-        == render 'index.html.slim'
-      = paginate @menus
+          - if params[:q].present?
+            h2 
+              strong #{@menus.first.category.name}
+          br
+        == render 'menu_list.html.slim'
+        = paginate @menus
