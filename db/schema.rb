@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160812103752) do
     t.datetime "updated_at",                          null: false
     t.string   "image"
     t.boolean  "dirty",               default: false, null: false
-    t.integer  "parent_id"
+    t.integer  "parent_id",           default: 0,     null: false
     t.string   "uuid"
   end
 
