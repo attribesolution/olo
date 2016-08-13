@@ -18,7 +18,7 @@ class Api::V1::OrdersController < ApiController
     order_detail = params[:order_detail]
         
     order_detail.each do |detail|
-      OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_price: detail[:item_price], item_name: detail[:item_name])
+      OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_price: detail[:item_price], item_name: detail[:item_name], uuid: detail[:uuid])
     end
     
     render :json => { message: "Order created successfully.", :status => 200 }

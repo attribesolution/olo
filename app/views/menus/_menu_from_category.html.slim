@@ -1,0 +1,37 @@
+#nestable2.dd
+		ol.dd-list
+			- @menus.each do |menu|
+				li.dd-item data-id=menu.id 
+				  .dd-handle.font-extra-bold
+				    = menu.name
+				  ol.dd-list  
+				    li.dd-item
+				      div
+				      	strong Dirty : 
+				        = menu.dirty ? "Yes" : "No" 
+				    li.dd-item
+				      div
+				      	strong Price : 
+				        = menu.price.to_s
+				    li.dd-item
+				      div
+				      	strong Description : 
+				        = menu.description
+				    li.dd-item
+				      div
+				      	strong Category : 
+				        = menu.category.name   
+				    li.dd-item
+				      div
+				      	strong Approved : 
+				        = menu.approved ? "Yes" : "No"
+				    li.dd-item
+				      div
+				      	br
+				        = link_to menu, class: "btn btn-primary btn-xs" do
+	      					i.fa.fa-eye
+	      					| Show
+
+
+
+	      					

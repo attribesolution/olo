@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   before_create :generate_api_key
   before_create :generate_passcode
   # after_create :notify_admin
-
+  has_many :branches, :class_name => "Branch", :foreign_key => "restaurant_owner_id"
   has_many :categories, :class_name => "Category", :foreign_key => "restaurant_owner_id"
   has_many :menus, :class_name => "Menu", :foreign_key => "restaurant_owner_id"
   has_many :device_table_mappings, :class_name => "DeviceTableMapping", :foreign_key => "restaurant_owner_id"

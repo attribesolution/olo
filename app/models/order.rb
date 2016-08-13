@@ -8,6 +8,10 @@ class Order < ActiveRecord::Base
   scope :by_restaurant, lambda { |id| where(restaurant_owner_id: id) }
   scope :from_order, lambda { |id| where("id > ?", id) }
 
+  def self.search(query)
+  	where("phone like ?", "#{query}") 
+	end
+
   def self.update_print_status
   	where(is_printed: false).update_all(is_printed: true)
   end
