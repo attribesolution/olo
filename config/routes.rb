@@ -61,7 +61,11 @@ Rails.application.routes.draw do
           post :updated
         end
       end
-      resources :orders
+      resources :orders do
+        collection do
+          get :print
+        end
+      end
       resource :user do
         get :get_api_key, on: :member
       end
