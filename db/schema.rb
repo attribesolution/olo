@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160812103752) do
 
   # These are extensions that must be enabled in order to support this database
@@ -34,7 +33,11 @@ ActiveRecord::Schema.define(version: 20160812103752) do
     t.datetime "updated_at",                          null: false
     t.string   "image"
     t.boolean  "dirty",               default: false, null: false
-    t.integer  "parent_id",           default: 0,     null: false
+    t.integer  "parent_id"
+    t.integer  "lft",                 default: 0,     null: false
+    t.integer  "rgt",                 default: 0,     null: false
+    t.integer  "depth",               default: 0,     null: false
+    t.integer  "children_count",      default: 0,     null: false
     t.string   "uuid"
   end
 
