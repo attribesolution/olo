@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812102022) do
+ActiveRecord::Schema.define(version: 20160812103752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160812102022) do
     t.float    "original_price"
     t.string   "serving"
     t.string   "uuid"
+    t.integer  "sort_order"
   end
 
   add_index "menus", ["approved"], name: "index_menus_on_approved", using: :btree
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 20160812102022) do
     t.string   "phone"
     t.string   "address"
     t.integer  "device_os"
+    t.boolean  "is_printed",              default: false
   end
 
   create_table "reservations", force: :cascade do |t|
