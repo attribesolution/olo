@@ -26,24 +26,21 @@
             h2 
               strong 
                 = params[:q][:name_or_description_or_category_name_cont]
-            br
-            = render 'menu_from_category.html.slim'
-          - else
-            table.table cellpadding="1" cellspacing="1"
-              thead
-                tr
-                  th Name
-                  th Dirty
-                  th Price
-                  th Description
-                  th Category
-                  th Active
-                  th Actions
+          table.table cellpadding="1" cellspacing="1"
+            thead
+              tr
+                th Name
+                th Dirty
+                th Price
+                th Description
+                th Category
+                th Active
+                th Actions
 
-              tbody
-                / = form_tag destroy_multiple_menus_path, method: :delete do
-                /   br
-                /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
-                = render 'menu.html.slim'
-          br
-        = paginate @menus
+            tbody
+              / = form_tag destroy_multiple_menus_path, method: :delete do
+              /   br
+              /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
+              = render 'menu.html.slim'
+        br
+      = paginate @menus
