@@ -24,7 +24,9 @@
           br
           - if params[:q].present?
             h2 
-              strong #{@menus.first.category.name}
+              strong 
+                = params[:q][:name_or_description_or_category_name_cont]
+            br
             = render 'menu_from_category.html.slim'
           - else
             table.table cellpadding="1" cellspacing="1"
