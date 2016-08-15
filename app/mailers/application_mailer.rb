@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "Dmenu <team@dmenu.co>"
-  # layout 'mailer'
+  default from: ENV["GMAIL_USERNAME"]
+  layout 'mailer'
 end

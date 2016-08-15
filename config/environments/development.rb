@@ -37,11 +37,10 @@ Rails.application.configure do
     password: Rails.application.secrets.email_provider_apikey
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => ENV["DOMAIN_NAME"] }
+  config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.raise_delivery_errors = true
-  # Send email in development mode?
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
 
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
@@ -55,4 +54,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.active_job.queue_adapter = :delayed_job
 end
