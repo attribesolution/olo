@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+
+  resources :branches
   # get 'menu_images/destroy'
 
   resources :device_table_mappings
-  resources :menus, :only => [:index, :show]
+  resources :menus, :only => [:index, :show] do
+    collection do
+      post :menu_sorting
+    end
+  end
 
   resources :categories, :only => [:index, :show]
   
@@ -29,6 +35,13 @@ Rails.application.routes.draw do
 
   namespace :api do
   	namespace :v1 do
+      resources :branches do
+        collection do
+          get :index
+        end
+
+      end
+
       resources :categories do
         collection do
           get :sync
@@ -48,7 +61,11 @@ Rails.application.routes.draw do
           post :updated
         end
       end
-      resources :orders
+      resources :orders do
+        collection do
+          get :print
+        end
+      end
       resource :user do
         get :get_api_key, on: :member
       end

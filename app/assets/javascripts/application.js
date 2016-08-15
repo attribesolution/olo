@@ -28,4 +28,4 @@
 //= require sparkline/index.js
 //= require homer.js
 //= require charts.js
-	
+//= require nestable/jquery.nestable.js

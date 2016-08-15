@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @branch.name
+p
+  strong Code:
+  = @branch.code
+p
+  strong Address:
+  = @branch.address
+p
+  strong Phone:
+  = @branch.phone
+
+= link_to 'Edit', edit_branch_path(@branch)
+'|
+= link_to 'Back', branches_path
