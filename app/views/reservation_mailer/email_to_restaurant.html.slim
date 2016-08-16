@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta[content="text/html; charset=UTF-8" http-equiv="Content-Type"]
+  body
+    h1
+      | Table Reservation
+    p
+      |  Time: 
+      = @time 
+    p
+      |  No. of Person: 
+      = @reservation.no_of_person
+    p
+      |  Phone: 
+      = @reservation.phone
+    p
+      |  Branch: 
+      = @reservation.branch.name   
