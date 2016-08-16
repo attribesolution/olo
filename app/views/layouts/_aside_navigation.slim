@@ -5,7 +5,7 @@ aside#menu
         = image_tag "dm-logo2.png", class: "img-circle m-b"
       .stats-label.text-color
         - if user_signed_in?
-          span.font-extra-bold.font-uppercase #{current_user.email}
+          span.font-extra-bold.font-uppercase #{link_to current_user.email, user_path(current_user.id)}
         .dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#" 
             small.text-muted

@@ -16,4 +16,7 @@ html
       = @reservation.phone
     p
       |  Branch: 
-      = @reservation.branch.name   
+      = @reservation.branch.name
+    p
+      |  Reservation Code: 
+      = @reservation.branch.code + "-" + @reservation.id.to_s   
