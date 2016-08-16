@@ -1,8 +1,9 @@
 class ReservationMailer < ApplicationMailer
-	def sample_email(user)
+	def email_to_customer(user)
     @user = user
     mail(to: @user.email, subject: 'This is for customer')
   end
+  
   def email_to_restaurant(reservation)
   	@reservation = reservation
   	

@@ -3,7 +3,8 @@ class SendEmailJob < ActiveJob::Base
 
   def perform(user)
     @user = user
-    ReservationMailer.sample_email(@user).deliver_later
     ReservationMailer.email_to_restaurant(@user).deliver_later
+    ReservationMailer.email_to_customer(@user).deliver_later
+    
   end
 end
