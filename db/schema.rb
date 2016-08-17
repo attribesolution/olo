@@ -33,11 +33,7 @@ ActiveRecord::Schema.define(version: 20160815125816) do
     t.datetime "updated_at",                          null: false
     t.string   "image"
     t.boolean  "dirty",               default: false, null: false
-    t.integer  "parent_id"
-    t.integer  "lft",                 default: 0,     null: false
-    t.integer  "rgt",                 default: 0,     null: false
-    t.integer  "depth",               default: 0,     null: false
-    t.integer  "children_count",      default: 0,     null: false
+    t.integer  "parent_id",           default: 0,     null: false
     t.string   "uuid"
   end
 
@@ -146,7 +142,7 @@ ActiveRecord::Schema.define(version: 20160815125816) do
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.integer  "device_os"
+    t.string   "device_os"
     t.boolean  "is_printed",              default: false
   end
 
