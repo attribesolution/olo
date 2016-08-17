@@ -1,3 +1,5 @@
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<p>Notification Email: <%= @user.notification_email if @user.notification_email %></p>
+<p>Phone: <%= @user.phone if @user.phone %></p>
+<p> <%= link_to "Edit", edit_user_path(params[:id]) %> </p>

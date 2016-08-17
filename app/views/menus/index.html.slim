@@ -24,24 +24,23 @@
           br
           - if params[:q].present?
             h2 
-              strong #{@menus.first.category.name}
-            = render 'menu_from_category.html.slim'
-          - else
-            table.table cellpadding="1" cellspacing="1"
-              thead
-                tr
-                  th Name
-                  th Dirty
-                  th Price
-                  th Description
-                  th Category
-                  th Active
-                  th Actions
+              strong 
+                = params[:q][:name_or_description_or_category_name_cont]
+          table.table cellpadding="1" cellspacing="1"
+            thead
+              tr
+                th Name
+                th Dirty
+                th Price
+                th Description
+                th Category
+                th Active
+                th Actions
 
-              tbody
-                / = form_tag destroy_multiple_menus_path, method: :delete do
-                /   br
-                /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
-                = render 'menu.html.slim'
-          br
-        = paginate @menus
+            tbody
+              / = form_tag destroy_multiple_menus_path, method: :delete do
+              /   br
+              /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
+              = render 'menu.html.slim'
+        br
+      = paginate @menus

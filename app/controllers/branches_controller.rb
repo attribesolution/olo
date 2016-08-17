@@ -1,10 +1,10 @@
 class BranchesController < ApplicationController
-  before_action :set_branch, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_branch, only: [:show, :edit, :update, :destroy]
 
   # GET /branches
   # GET /branches.json
   def index
-    @branches = Branch.all
+    @branches = Branch.by_restaurant(current_user.id).order(created_at: :desc)
   end
 
   # GET /branches/1

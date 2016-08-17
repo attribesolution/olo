@@ -18,6 +18,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'gon'
 gem 'httparty'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   gem 'byebug'
