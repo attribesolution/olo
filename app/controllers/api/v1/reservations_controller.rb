@@ -8,7 +8,7 @@ class Api::V1::ReservationsController < ApiController
       
       if @reservation.save!
         @email = @reservation.restaurant_owner.notification_email
-        SendEmailJob.set(wait: 10.seconds).perform_later(@reservation, @email)
+        SendEmailJob.set(wait: 10.seconds).perform_later(@reservation, @email, params[:time])
         #ReservationMailer.sample_email(@reservation).deliver
 	      render :json => { message: "Reservation created successfully.", :status => 200 }
       end

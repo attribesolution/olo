@@ -4,10 +4,10 @@ class ReservationMailer < ApplicationMailer
     mail(to: @user.email, subject: 'This is for customer')
   end
   
-  def email_to_restaurant(reservation, email)
+  def email_to_restaurant(reservation, email, time)
   	@reservation = reservation
-  	
-  	@time = Time.at(@reservation.time)
+  	#@time = DateTime.strptime(time,'%s')
+  	@time = Time.at(time.to_i)
   	mail(to: email, subject: 'This is for restaurant call center')
   end
 
