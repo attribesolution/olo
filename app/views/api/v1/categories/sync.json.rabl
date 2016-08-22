@@ -1,5 +1,5 @@
 collection @categories, :object_root => false
-attributes :id, :name, :created_at, :updated_at, :uuid
+attributes :id, :name, :created_at, :updated_at, :uuid, :sort_order
 
 node(:image) { |category| category.image unless category.image.nil? }
 

@@ -10,8 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, :only => [:index, :show]
-  
+  resources :categories, :only => [:index, :show] do
+    collection do
+      post :category_sorting
+    end
+  end
   root to: 'orders#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
