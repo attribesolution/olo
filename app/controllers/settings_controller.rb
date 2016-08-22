@@ -40,12 +40,13 @@ class SettingsController < ApplicationController
       flash[:alert] = e.message
     end
     redirect_to root_path
+    binding.pry
   end
 
   def import_dmenu_data(sync_response)
     Category.where(restaurant_owner_id: current_user.id).destroy_all # this will destroy all categories and its dependencies
     sync_response.each do |category|
-      new_category = Category.create(name: category["name"], image: category["image"], uuid: category["uuid"], restaurant_owner_id: current_user.id)
+      new_category = Category.create(name: category["name"], image: category["image"], uuid: category["uuid"], restaurant_owner_id: current_user.id,sort_order: category["sort_order"])
       
       category["menus"].each do |menu|
         new_menu = Menu.create(name: menu["name"], price: menu["price"], description: menu["description"], uuid: menu["uuid"], category_id: new_category.id, approved: menu["approved"], restaurant_owner_id: current_user.id)

@@ -1,11 +1,11 @@
 class Api::V1::CategoriesController < ApiController
   before_filter :check_required_params, :check_device, only: [:dirty]
   def index
-    @categories = @user.categories.order('created_at DESC')
+    @categories = @user.categories.order('sort_order ASC')
   end
 
   def sync
-    @categories = @user.categories.order('created_at DESC')
+    @categories = @user.categories.order('sort_order ASC')
   end
 
   def dirty
