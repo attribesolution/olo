@@ -13,21 +13,6 @@ class MenusController < ApplicationController
   # GET /menus/1.json
   def show
   end
-
-  def menu_sorting
-    # binding.pry
-    sorted_ids = params[:sorted_ids]
-    sorted_ids.each_with_index do |sorted_id, index|
-      menu = Menu.find_by_id(sorted_id)
-      if menu.nil?
-        return render :json => { message: "Menu not found", :status => 404 }
-      else
-        menu.sort_order = index + 1
-        menu.save
-      end
-    end
-    return render :json => { message: "Success.", :status => 200 }
-  end
   
   private
     # Use callbacks to share common setup or constraints between actions.

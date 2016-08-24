@@ -13,20 +13,6 @@ class CategoriesController < ApplicationController
   def show
   end
 
-  def category_sorting
-    sorted_ids = params[:sorted_ids]
-    sorted_ids.each_with_index do |sorted_id, index|
-      category = Category.find_by_id(sorted_id)
-      if category.nil?
-        return render :json => { message: "Category not found", :status => 404 }
-      else
-        category.sort_order = index + 1
-        category.save
-      end
-    end
-    return render :json => { message: "Success.", :status => 200 }
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
