@@ -3,7 +3,7 @@ class Api::V1::MenusController < ApiController
 
   def index
     if params[:category_id]
-      @menus = Menu.by_category_id(params[:category_id]).is_active.order('created_at DESC')
+      @menus = Menu.by_category_id(params[:category_id]).is_active.order('sort_order ASC')
     else
       @menus = Menu.is_active.order('created_at DESC')
     end
