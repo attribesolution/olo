@@ -69,6 +69,12 @@ Rails.application.routes.draw do
           get :print
         end
       end
+
+      resource :custom_apis, only: [] do
+        collection do
+          post :create_order
+        end
+      end
       resource :user do
         get :get_api_key, on: :member
       end
