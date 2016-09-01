@@ -1,6 +1,6 @@
 class Api::V1::CustomApisController < ApiController
   def create_order
-    @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], restaurant_owner_id: @user.id)
+    @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], device_os: params[:device_os], restaurant_owner_id: @user.id)
     order_total = 0
     order_detail = params[:order_detail]
         
