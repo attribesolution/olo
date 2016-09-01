@@ -31,8 +31,6 @@
         h5 Your Olo Authorization Key 
         a#authorization_key xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         = hidden_field(:current_user, :api_key)
-        / input#api_key type="hidden" value="#{current_user.api-key}"
-
         br
         br
         = form_tag sync_settings_path() do
