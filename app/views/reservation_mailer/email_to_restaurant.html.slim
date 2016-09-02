@@ -7,7 +7,7 @@ html
       | Table Reservation
     p
       |  Time: 
-      = @reservation.time 
+      = @reservation.time.strftime("%d/%m/%Y %I:%M %p")
     p
       |  Name: 
       = @reservation.name
