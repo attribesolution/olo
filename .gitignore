@@ -10,6 +10,10 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
+/Gemfile.lock
+/db/schema.rb
+
+
 # bundler state
 /.bundle
 /vendor/bundle/

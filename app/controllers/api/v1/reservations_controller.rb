@@ -2,13 +2,13 @@ class Api::V1::ReservationsController < ApiController
 	
 	def create
     begin
-      reservation_time = DateTime.strptime(params[:time].to_s,'%s')
+      reservation_time = Time.at(params[:time])
 
       @reservation = Reservation.new(time: reservation_time, no_of_person: params[:no_of_person], phone: params[:phone], restaurant_owner_id: @user.id, name: params[:name], email: params[:email], branch_id: params[:branch_id])
       
       if @reservation.save!
         @email = @reservation.restaurant_owner.notification_email
-        SendEmailJob.set(wait: 10.seconds).perform_later(@reservation, @email, params[:time])
+        SendEmailJob.set(wait: 10.seconds).perform_later(@reservation, @email)
         #ReservationMailer.sample_email(@reservation).deliver
 	      render :json => { message: "Reservation created successfully.", :status => 200 }
       end

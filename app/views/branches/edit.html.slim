@@ -1,6 +1,15 @@
 h1 Editing branch
+= simple_form_for(@branch) do |f|
+  = f.error_notification
 
-== render 'form'
+  .form-inputs
+    = f.input :name
+    = f.input :code, readonly: true
+    = f.input :address
+    = f.input :phone
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Show', @branch
 '|
