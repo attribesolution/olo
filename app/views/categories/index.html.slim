@@ -10,10 +10,16 @@
 
     h2.font-light.m-b-xs
       | Categories
-    small Listing Categories
 
 .hpanel     
   .panel-body
+    = search_form_for @q do |f|      
+      .input-group
+        = f.search_field :name_cont, class: "form-control"
+        span.input-group-btn
+          = f.submit "Search", class:"btn btn-primary"
+    br
+    br
     table.table
       thead
         tr
@@ -26,6 +32,6 @@
             td = link_to category.name, category
             td = category.dirty ? "Yes" : "No"
             td 
-              = link_to menus_path(:q => {:name_or_description_or_category_name_cont => category.name}), class: "btn btn-primary btn-xs" do
+              = link_to menus_path(:category_id => category.id), class: "btn btn-primary btn-xs" do
                 i.fa.fa-eye
                 |  Show Menus
