@@ -7,8 +7,11 @@
         
 
     h2.font-light.m-b-xs
-      | Menus
-    small Listing Menus
+      - if params[:category_id].present?
+        = @cat.name
+      - else
+        | Menus
+
 
 
 .row
@@ -16,31 +19,29 @@
     .hpanel     
       .panel-body
         = search_form_for @q do |f|
-          .form-inputs
-            = f.search_field :name_or_description, class: "form-control"
+          .input-group
+            = f.search_field :name_or_description_or_category_name_cont, class: "form-control"
+            span.input-group-btn
+              = f.button  :Search, name: "category_id",value: params[:category_id], class:"btn btn-primary"
           br
-          = f.submit "Search", class:"btn btn-primary btn-xs"
-          br
-          br
-          - if params[:q].present?
-            h2 
-              strong 
-                = params[:q][:name_or_description_or_category_name_cont]
-          table.table cellpadding="1" cellspacing="1"
-            thead
-              tr
-                th Name
-                th Dirty
-                th Price
-                th Description
-                th Category
-                th Active
-                th Actions
+        table.table cellpadding="1" cellspacing="1"
+          thead
+            tr
+              th Name
+              th Dirty
+              th Price
+              th Description
+              th Category
+              th Active
+              th Actions
 
-            tbody
-              / = form_tag destroy_multiple_menus_path, method: :delete do
-              /   br
-              /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
-              = render 'menu.html.slim'
+          tbody
+            / = form_tag destroy_multiple_menus_path, method: :delete do
+            /   br
+            /   = submit_tag "Delete selected", class: "btn btn-primary btn-xs"
+            = render 'menu.html.slim'
         br
-      = paginate @menus
+        = link_to categories_path, class: "btn btn-primary btn-xs" do
+          i.fa.fa-arrow-left
+          |  Back
+      / = paginate @menus

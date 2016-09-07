@@ -5,8 +5,14 @@ class MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @q = Menu.ransack(params[:q])
-    @menus = @q.result.includes(:category).by_restaurant_owner(current_user.id).order(sort_order: :asc).page(params[:page])
+    @cat = Category.find_by_id(params[:category_id])
+    if params[:q].present?
+      @q = Menu.ransack(params[:q])
+      @menus = @q.result.includes(:category).by_category_id(params[:category_id]).page(params[:page]).order(sort_order: :asc)
+    else
+      @menus = Menu.by_category_id(params[:category_id]).order(sort_order: :asc)
+      @q = Menu.ransack(@cat.name)
+    end
   end
 
   # GET /menus/1
