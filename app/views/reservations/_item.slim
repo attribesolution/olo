@@ -16,10 +16,18 @@
 
           .row
             .col-sm-5.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
-              = reservation.time.strftime("%b %d, %Y - %H:%M")
+              = reservation.time.strftime("%d/%m/%Y %I:%M %p")
 
             .col-sm-4.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
               = reservation.no_of_person
 
             .col-sm-3.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
               = reservation.phone
+          br      
+          .row
+            .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+              b Name: 
+              = reservation.name
+            .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
+              b Email: 
+              = reservation.email
