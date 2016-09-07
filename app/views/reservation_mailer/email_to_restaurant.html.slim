@@ -7,12 +7,12 @@ html
       | Table Reservation
     p
       |  Time: 
-      = @time 
+      = @reservation.time.strftime("%d/%m/%Y %I:%M %p")
     p
       |  Name: 
       = @reservation.name
     p
-      |  No. of Person: 
+      |  No. of Persons: 
       = @reservation.no_of_person
     p
       |  Phone: 

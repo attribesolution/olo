@@ -5,7 +5,13 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.by_restaurant_owner(current_user.id).order(sort_order: :asc)
+    if params[:q].present?
+      @q = Category.ransack(params[:q])
+      @categories = @q.result.includes(params[:name]).page(params[:page]).order(sort_order: :asc)
+    else
+      @categories = Category.by_restaurant_owner(current_user.id).order(sort_order: :asc)
+      @q = Category.ransack(@category)
+    end
   end
 
   # GET /categories/1

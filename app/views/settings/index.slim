@@ -26,6 +26,12 @@
           br
           .form-actions
             = f.submit "Upload", class: "btn btn-primary"
+        
+        br
+        h5 Your Olo Authorization Key 
+        a#authorization_key xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        = hidden_field(:current_user, :api_key)
+        br
         br
         = form_tag sync_settings_path() do
           = label_tag :passcode, "Your DMenu Passcode"
