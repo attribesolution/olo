@@ -50,13 +50,13 @@
       .col-sm-4
         b Platform:
         | &nbsp;
-        - if order.device_os == 1
+        - if order.device_os == "1"
           font color="#33cc33" size="4" 
             i.fa.fa-android aria-hidden="true"
-        - elsif order.device_os == 2
+        - elsif order.device_os == "2"
           font color="silver" size="4" 
             i.fa.fa-apple aria-hidden="true"
-        - elsif order.device_os == 3
+        - elsif order.device_os == "3"
           font color="blue" size="4" 
             i.fa.fa-internet-explorer aria-hidden="true"
 
