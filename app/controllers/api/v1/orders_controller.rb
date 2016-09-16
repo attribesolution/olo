@@ -11,15 +11,19 @@ class Api::V1::OrdersController < ApiController
   end
 
   def create
-    order_time = DateTime.strptime(params[:order_time].to_s,'%s')
-    @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], order_total: params[:order_total], order_time: order_time, restaurant_owner_id: @user.id, device_os: params[:device_os])
     order_detail = params[:order_detail]
-        
-    order_detail.each do |detail|
-      OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_price: detail[:item_price], item_name: detail[:item_name], uuid: detail[:uuid])
+    if order_detail.nil?
+      render :json => { message: "Order cannot be created without order detail", :status => 422 }
+    else
+      order_time = DateTime.strptime(params[:order_time].to_s,'%s')
+      @order = Order.create(name: params[:name], phone: params[:phone], address: params[:address], order_total: params[:order_total], order_time: order_time, restaurant_owner_id: @user.id, device_os: params[:device_os])
+          
+      order_detail.each do |detail|
+        OrderDetail.create(order_id: @order.id, menu_id: detail[:menu_id], quantity: detail[:quantity], item_price: detail[:item_price], item_name: detail[:item_name], uuid: detail[:uuid])
+      end
+      
+      render :json => { message: "Order created successfully.", :status => 200 }
     end
-    
-    render :json => { message: "Order created successfully.", :status => 200 }
   end
 
   private
