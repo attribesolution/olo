@@ -5,15 +5,22 @@ html
   body
     h1
       | Table Reservation
-    p
-      |  Time: 
-      = @reservation.time.strftime("%d/%m/%Y %I:%M %p")
-    p
-      |  Name: 
-      = @reservation.name
-    p
-      |  No. of Persons: 
-      = @reservation.no_of_person
+
+    if @reservation.time
+      p
+        |  Time: 
+        = @reservation.time.strftime("%d/%m/%Y %I:%M %p")
+
+    if @reservation.name
+      p
+        |  Name: 
+        = @reservation.name
+        
+    if @reservation.no_of_person    
+      p
+        |  No. of Persons: 
+        = @reservation.no_of_person
+
     p
       |  Phone: 
       = @reservation.phone
