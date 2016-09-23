@@ -31,3 +31,14 @@
             .col-sm-6.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;")
               b Email: 
               = reservation.email
+    .panel-footer
+      .row
+        .col-sm-4
+          b Code: 
+          = reservation.branch.code + "-" + reservation.id.to_s
+        .col-sm-4
+          b Created at: 
+          = reservation.created_at.strftime("%d/%m/%Y %I:%M %p") 
+        / .col-sm-4
+        /   b Address: 
+        /   |  
