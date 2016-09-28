@@ -1,5 +1,5 @@
 class Api::V1::ReservationsController < ApiController
-	
+	before_filter :branch_exist, only:[:create] 
 	def create
     begin
       reservation_time = Time.at(params[:time])
@@ -14,6 +14,16 @@ class Api::V1::ReservationsController < ApiController
       end
     rescue Exception => e
       render :json => { message: e.message, :status => 400 }
+    end
+  end
+
+private
+  def branch_exist
+    branch = Branch.find_by_id(params[:branch_id])
+    if branch
+      return
+    else
+      render :json => { message: "This branch doesn't exist", :status => 400 }
     end
   end
 

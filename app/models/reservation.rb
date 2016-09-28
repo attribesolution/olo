@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-	validates_presence_of :time, :no_of_person, :phone
+	validates_presence_of :time, :no_of_person, :phone, :branch_id
 	
 	belongs_to :restaurant_owner, :class_name => "User", :foreign_key => "restaurant_owner_id"
 	belongs_to :branch
