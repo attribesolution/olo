@@ -75,4 +75,9 @@
       .col-sm-4
         b Address: 
         | #{order.address}
+
+    .row
+      .col-sm-12
+        b Name: 
+        | #{order.created_at.strftime("%d/%m/%Y %I:%M %p")}
 </div>
