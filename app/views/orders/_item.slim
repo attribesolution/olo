@@ -79,5 +79,6 @@
     .row
       .col-sm-12
         b Created At: 
-        | #{order.created_at.strftime("%d/%m/%Y %I:%M %p")}
+        - created_at = order.created_at.in_time_zone('Karachi')
+        = created_at.strftime("%d/%m/%Y %I:%M %p")
 </div>
