@@ -3,9 +3,9 @@ class ReservationsController < ApplicationController
 
 	def index
 		if params[:lastReservationId]
-      @reservations = Reservation.by_restaurant(current_user.id).from_reservation(params[:lastReservationId]).order(created_at: :desc)
+      @reservations = Reservation.by_restaurant(current_user.id).from_reservation(params[:lastReservationId]).page(params[:page]).per(10).order(created_at: :desc)
     else
-	    @reservations = Reservation.by_restaurant(current_user.id).order(created_at: :desc)
+	    @reservations = Reservation.by_restaurant(current_user.id).page(params[:page]).per(10).order(created_at: :desc)
     end
     gon.lastReservationId = @reservations.first.id if @reservations.any?
     gon.autoFetchNewReservations = true

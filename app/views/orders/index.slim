@@ -11,5 +11,6 @@
     - @orders.each do |order|
       = render "orders/item", order: order, fullScreen: false
 - else
-		b
-			p There are no order against the phone number: #{params[:search]}
+    b
+      p There are no order against the phone number: #{params[:search]}
+= paginate @orders
