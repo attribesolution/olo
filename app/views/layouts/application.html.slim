@@ -20,6 +20,20 @@ html
     
     = csrf_meta_tags
 
+
+    script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js" 
+    javascript:
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCDLaUKEkG3T0MCzjEVwS6RTNAGrzuLX34",
+        authDomain: "delivodriver.firebaseapp.com",
+        databaseURL: "https://delivodriver.firebaseio.com",
+        storageBucket: "delivodriver.appspot.com",
+        messagingSenderId: "15367859857"
+      };
+      firebase.initializeApp(config);
+
+
   body
     /! Simple splash screen
     .splash
