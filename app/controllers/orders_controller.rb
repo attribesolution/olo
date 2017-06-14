@@ -6,10 +6,10 @@ class OrdersController < ApplicationController
 	def index
     
     if params[:search]
-      @orders=Order.by_restaurant(current_user.id).search(params[:search]).order(created_at: :desc)
+      @orders=Order.by_restaurant(current_user.id).search(params[:search]).page(params[:page]).per(10).order(created_at: :desc)
     else
       @orders = Order.by_restaurant(current_user.id).order(created_at: :desc)
-      @orders = @orders.where(created_at: 12.hours.ago..Time.now)
+      @orders = @orders.where(created_at: 12.hours.ago..Time.now).page(params[:page]).per(10)
     end
     gon.lastOrderId = @orders.first.id if @orders.any?
     gon.autoFetchNewOrders = true

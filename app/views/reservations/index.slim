@@ -8,3 +8,5 @@
   .row.projects
     - @reservations.each do |reservation|
       = render "reservations/item", reservation: reservation
+
+  = paginate @reservations
