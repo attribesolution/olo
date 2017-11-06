@@ -51,7 +51,7 @@ class SettingsController < ApplicationController
         new_menu = Menu.create(name: menu["name"], price: menu["price"], description: menu["description"], uuid: menu["uuid"], category_id: new_category.id, approved: menu["approved"], restaurant_owner_id: current_user.id, sort_order: menu["sort_order"])
         
         menu["images"].each do |menu_image|
-          new_menu_image = MenuImage.create(image: menu_image["url"], menu_id: new_menu.id)
+          new_menu_image = MenuImage.create(image: Rails.application.secrets.dmenu_domain_address + menu_image["url"], menu_id: new_menu.id)
         end
       end
     end
